@@ -1,0 +1,865 @@
+[
+  {
+    "id": "04f14dd9-af5e-4de4-bd9c-d2ccc5e12921",
+    "source_id": "USDA-IL-45196",
+    "name": "Green City Market (Lincoln Park)",
+    "entity_type": "farmers_market",
+    "description": "Premier sustainable farmers market in Chicago connecting local sustainable farmers with urban consumers.",
+    "address": "1817 N Clark St",
+    "city": "Chicago",
+    "state_code": "IL",
+    "zip_code": "60614",
+    "latitude": 41.9163,
+    "longitude": -87.6358,
+    "contact_phone": "773-880-1266",
+    "website_url": "https://www.greencitymarket.org",
+    "products_offered": [
+      "organic produce",
+      "artisan cheese",
+      "pasture-raised meat",
+      "heritage grains",
+      "baked goods",
+      "honey"
+    ],
+    "payment_methods": [
+      "SNAP/EBT",
+      "Link Match",
+      "Credit Card",
+      "Cash"
+    ],
+    "schedule": "Saturdays & Wednesdays 7:00 AM - 1:00 PM (May-Oct)",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "49df1f84-bc02-488a-b1bd-74adc048f43e",
+    "source_id": "USDA-IL-85386",
+    "name": "Downtown Bloomington Farmers' Market",
+    "entity_type": "farmers_market",
+    "description": "Producer-only market located around the historic square in McLean County.",
+    "address": "200 N Main St",
+    "city": "Bloomington",
+    "state_code": "IL",
+    "zip_code": "61701",
+    "latitude": 40.4842,
+    "longitude": -88.9936,
+    "contact_phone": "309-829-9599",
+    "website_url": "https://www.downtownbloomington.org",
+    "products_offered": [
+      "heirloom tomatoes",
+      "sweet corn",
+      "microgreens",
+      "farm-fresh eggs",
+      "cut flowers",
+      "pork"
+    ],
+    "payment_methods": [
+      "SNAP/EBT",
+      "WIC Senior",
+      "Credit Card",
+      "Cash"
+    ],
+    "schedule": "Saturdays 7:30 AM - 12:00 PM (May-Oct)",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "be8708ee-2b94-4a86-9b65-0135a9e23427",
+    "source_id": "USDA-IL-9900",
+    "name": "Urbana's Market at the Square",
+    "entity_type": "farmers_market",
+    "description": "Central Illinois vibrant Saturday market featuring over 150 local agricultural producers and artists.",
+    "address": "400 S Vine St",
+    "city": "Urbana",
+    "state_code": "IL",
+    "zip_code": "61801",
+    "latitude": 40.1098,
+    "longitude": -88.2045,
+    "contact_phone": "217-384-2319",
+    "website_url": "https://www.urbanamarket.org",
+    "products_offered": [
+      "organic vegetables",
+      "mushrooms",
+      "fruit cider",
+      "native plants",
+      "wool yarn",
+      "baked goods"
+    ],
+    "payment_methods": [
+      "SNAP/Link",
+      "Credit Card",
+      "Cash"
+    ],
+    "schedule": "Saturdays 7:00 AM - 12:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "18af4267-d10b-4746-b35f-4252c8355146",
+    "source_id": "USDA-IL-68231",
+    "name": "Peoria RiverFront Market",
+    "entity_type": "farmers_market",
+    "description": "Scenic riverfront farmers market supporting Illinois river valley producers.",
+    "address": "212 SW Water St",
+    "city": "Peoria",
+    "state_code": "IL",
+    "zip_code": "61602",
+    "latitude": 40.6908,
+    "longitude": -89.5905,
+    "contact_phone": "309-671-5555",
+    "website_url": "https://www.visitpeoria.com/events/riverfront-market",
+    "products_offered": [
+      "sweet corn",
+      "berries",
+      "grass-fed beef",
+      "local honey",
+      "baked goods",
+      "pottery"
+    ],
+    "payment_methods": [
+      "SNAP/EBT",
+      "Cash",
+      "Card"
+    ],
+    "schedule": "Saturdays 8:00 AM - 12:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "68ad3611-8499-455e-99b7-95c82422dca8",
+    "source_id": "USDA-IL-76332",
+    "name": "Carbondale Farmers' Market",
+    "entity_type": "farmers_market",
+    "description": "Serving Jackson County and the Shawnee National Forest region with local orchard and farm goods.",
+    "address": "2001 W Main St",
+    "city": "Carbondale",
+    "state_code": "IL",
+    "zip_code": "62901",
+    "latitude": 37.7273,
+    "longitude": -89.2435,
+    "contact_phone": "618-529-2471",
+    "website_url": "https://carbondalefarmersmarket.com",
+    "products_offered": [
+      "Southern IL peaches",
+      "apples",
+      "garlic",
+      "ferments",
+      "herbal teas",
+      "organic greens"
+    ],
+    "payment_methods": [
+      "Link/SNAP",
+      "Cash",
+      "Card"
+    ],
+    "schedule": "Saturdays 8:00 AM - 12:00 PM (Year Round)",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "b8a08fc5-db3a-4b7d-972e-7cbe87c9b869",
+    "source_id": "USDA-IL-92885",
+    "name": "Prairie Crossing Farm & CSA",
+    "entity_type": "farm",
+    "description": "100-acre organic working farm within a conservation community, hosting beginning farmer incubator programs.",
+    "address": "32400 N Harris Rd",
+    "city": "Grayslake",
+    "state_code": "IL",
+    "zip_code": "60030",
+    "latitude": 42.3364,
+    "longitude": -87.9942,
+    "contact_phone": "847-548-4035",
+    "website_url": "https://www.libertyprairie.org",
+    "products_offered": [
+      "certified organic vegetables",
+      "pasture poultry",
+      "eggs",
+      "winter greens",
+      "compost"
+    ],
+    "payment_methods": [
+      "Credit Card",
+      "Bank Transfer",
+      "CSA Membership"
+    ],
+    "schedule": "Farm stand open Tue & Fri 2:00 PM - 6:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "84ef9a59-7fd6-420c-9f4a-4c03abfa5581",
+    "source_id": "USDA-IL-2534",
+    "name": "Spence Farm",
+    "entity_type": "farm",
+    "description": "Centennial diversified regenerative farm supplying top Midwest restaurants and regional flour mills.",
+    "address": "19485 E 600 North Rd",
+    "city": "Fairbury",
+    "state_code": "IL",
+    "zip_code": "61739",
+    "latitude": 40.7456,
+    "longitude": -88.5147,
+    "contact_phone": "815-692-2636",
+    "website_url": "https://www.thespencefarm.com",
+    "products_offered": [
+      "heritage grains",
+      "polled hereford beef",
+      "foraged ramps",
+      "pastured pork",
+      "specialty squash"
+    ],
+    "payment_methods": [
+      "Cash",
+      "Invoice",
+      "Wholesale Direct"
+    ],
+    "schedule": "By appointment & chef delivery routes",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "75f6224a-3357-42d7-8911-5fbaa08bcd1a",
+    "source_id": "USDA-IL-10612",
+    "name": "Eckert's Belleville Farm",
+    "entity_type": "farm",
+    "description": "Historic multi-generation fruit orchard and agritourism hub in Southwestern Illinois.",
+    "address": "951 S Green Mount Rd",
+    "city": "Belleville",
+    "state_code": "IL",
+    "zip_code": "62220",
+    "latitude": 38.4892,
+    "longitude": -89.9482,
+    "contact_phone": "618-233-0513",
+    "website_url": "https://www.eckerts.com",
+    "products_offered": [
+      "pick-your-own apples",
+      "peaches",
+      "strawberries",
+      "pumpkins",
+      "cider donuts",
+      "apple cider"
+    ],
+    "payment_methods": [
+      "Cash",
+      "Credit Card"
+    ],
+    "schedule": "Daily 9:00 AM - 6:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "47f1ab16-bcfa-4593-93c3-81b2b185fc30",
+    "source_id": "USDA-IL-71673",
+    "name": "Broad Branch Farm",
+    "entity_type": "farm",
+    "description": "Family-run organic livestock and vegetable farm with emphasis on soil microbiological health.",
+    "address": "15310 N Oakland Rd",
+    "city": "Chillicothe",
+    "state_code": "IL",
+    "zip_code": "61523",
+    "latitude": 40.9234,
+    "longitude": -89.5103,
+    "contact_phone": "309-339-2362",
+    "website_url": "https://www.broadbranchfarm.com",
+    "products_offered": [
+      "100% grass-fed beef",
+      "pastured pork",
+      "organic heirloom vegetables",
+      "chicken",
+      "turkey"
+    ],
+    "payment_methods": [
+      "Online Store",
+      "Check",
+      "Cash"
+    ],
+    "schedule": "Delivery drops throughout Peoria and Central IL",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "a98c12f8-6bbb-4a9c-80ab-898160a0931d",
+    "source_id": "USDA-IL-80419",
+    "name": "Birkey's Farm Store (Case IH & Ag Tech)",
+    "entity_type": "supplier_equipment",
+    "description": "Leading agricultural equipment dealership providing machinery, precision ag diagnostics, and hydraulic repairs.",
+    "address": "2580 Federal Dr",
+    "city": "Decatur",
+    "state_code": "IL",
+    "zip_code": "62526",
+    "latitude": 39.8821,
+    "longitude": -88.9103,
+    "contact_phone": "217-877-3880",
+    "website_url": "https://www.birkeys.com",
+    "products_offered": [
+      "tractors",
+      "combines",
+      "precision GPS guidance",
+      "planters",
+      "tillage tools",
+      "replacement parts"
+    ],
+    "payment_methods": [
+      "AgriCredit",
+      "Card",
+      "Commercial Account"
+    ],
+    "schedule": "Mon-Fri 7:30 AM - 5:00 PM, Sat 7:30 AM - 12:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "0e17511c-64d1-45e1-917b-27963bfdf076",
+    "source_id": "USDA-IL-56923",
+    "name": "Central Illinois Ag (Agco & Precision)",
+    "entity_type": "supplier_equipment",
+    "description": "Farm machinery sales, field service dispatch, and precision planting hardware.",
+    "address": "300 Lake Land Blvd",
+    "city": "Mattoon",
+    "state_code": "IL",
+    "zip_code": "61938",
+    "latitude": 39.4623,
+    "longitude": -88.3754,
+    "contact_phone": "217-234-7468",
+    "website_url": "https://www.centralilag.com",
+    "products_offered": [
+      "Fendt tractors",
+      "Gleaner combines",
+      "sprayers",
+      "grain handling augers",
+      "seeding tech"
+    ],
+    "payment_methods": [
+      "Credit",
+      "Commercial Terms"
+    ],
+    "schedule": "Mon-Fri 7:30 AM - 5:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "70afefc7-1c51-4390-ad66-c176f87bac06",
+    "source_id": "USDA-IL-93637",
+    "name": "Beck's Hybrids Seed Distribution",
+    "entity_type": "supplier_seed",
+    "description": "Largest family-owned retail seed company offering ag research test plots and agronomy support.",
+    "address": "30623 E 1300 North Rd",
+    "city": "Downs",
+    "state_code": "IL",
+    "zip_code": "61736",
+    "latitude": 40.4012,
+    "longitude": -88.8712,
+    "contact_phone": "309-378-2003",
+    "website_url": "https://www.beckshybrids.com",
+    "products_offered": [
+      "non-GMO seed corn",
+      "trait soybeans",
+      "cover crop mixes",
+      "alfalfa seed",
+      "wheat seed"
+    ],
+    "payment_methods": [
+      "Seed Financing",
+      "Direct Order"
+    ],
+    "schedule": "Mon-Fri 7:00 AM - 5:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "0daa09a2-87d0-4b0d-9276-177f7f776eeb",
+    "source_id": "USDA-IL-41362",
+    "name": "Midwestern BioAg (Biological Soil Inputs)",
+    "entity_type": "supplier_fertilizer",
+    "description": "Specialized soil fertility programs balancing chemistry, physics, and biological activity in agricultural soils.",
+    "address": "1202 S 4th St",
+    "city": "Oregon",
+    "state_code": "IL",
+    "zip_code": "61061",
+    "latitude": 42.0089,
+    "longitude": -89.3321,
+    "contact_phone": "815-732-3331",
+    "website_url": "https://www.midwesternbioag.com",
+    "products_offered": [
+      "custom biological fertilizers",
+      "calcium sulfate gypsum",
+      "trace minerals",
+      "compost blends",
+      "soil inoculants"
+    ],
+    "payment_methods": [
+      "Terms",
+      "Check",
+      "Card"
+    ],
+    "schedule": "Mon-Fri 8:00 AM - 4:30 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "3c6c53e3-6af9-47ca-8aa1-af026b559ac7",
+    "source_id": "USDA-IL-88917",
+    "name": "University of Illinois Extension & Soil Lab Hub",
+    "entity_type": "extension_office",
+    "description": "Land-grant university extension providing impartial science-backed crop and garden diagnostics across 102 counties.",
+    "address": "1114 W Nevada St",
+    "city": "Urbana",
+    "state_code": "IL",
+    "zip_code": "61801",
+    "latitude": 40.1065,
+    "longitude": -88.2235,
+    "contact_phone": "217-333-7649",
+    "website_url": "https://extension.illinois.edu",
+    "products_offered": [
+      "soil testing diagnostics",
+      "pest management guides",
+      "commercial pesticide training",
+      "master gardener helpline"
+    ],
+    "payment_methods": [
+      "Public Service / Subsidized fees"
+    ],
+    "schedule": "Mon-Fri 8:00 AM - 5:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "e93624de-6503-440c-937c-6953449320d3",
+    "source_id": "USDA-IL-46415",
+    "name": "Prairie Bounty Food Hub",
+    "entity_type": "food_hub",
+    "description": "Regional food aggregation facility connecting central Illinois smallholder growers to schools and grocers.",
+    "address": "401 E Washington St",
+    "city": "Springfield",
+    "state_code": "IL",
+    "zip_code": "62701",
+    "latitude": 39.8012,
+    "longitude": -89.6453,
+    "contact_phone": "217-528-7654",
+    "website_url": "https://www.buyfreshbuylocalillinois.org",
+    "products_offered": [
+      "aggregated local produce",
+      "cold storage logistics",
+      "wholesale institutional sales",
+      "frozen meat packing"
+    ],
+    "payment_methods": [
+      "Wholesale Terms",
+      "ACH"
+    ],
+    "schedule": "Mon-Sat 6:00 AM - 4:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "1b5f4277-4b5f-4fa4-b12f-533613080c87",
+    "source_id": "USDA-VA-88571",
+    "name": "Charlottesville City Market",
+    "entity_type": "farmers_market",
+    "description": "One of Virginia's oldest and largest open-air markets featuring over 100 regional vendors.",
+    "address": "100 Water St E",
+    "city": "Charlottesville",
+    "state_code": "VA",
+    "zip_code": "22902",
+    "latitude": 38.0305,
+    "longitude": -78.4801,
+    "contact_phone": "434-970-3371",
+    "website_url": "https://www.charlottesville.gov/citymarket",
+    "products_offered": [
+      "Shenandoah apples",
+      "artisan goat cheese",
+      "organic greens",
+      "mushrooms",
+      "pastured poultry",
+      "cider"
+    ],
+    "payment_methods": [
+      "SNAP",
+      "Virginia Fresh Match",
+      "Card",
+      "Cash"
+    ],
+    "schedule": "Saturdays 8:00 AM - 1:00 PM (Apr-Dec)",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "4a29bf41-39be-4125-a20e-e98651c3feed",
+    "source_id": "USDA-VA-47787",
+    "name": "Historic Roanoke City Market",
+    "entity_type": "farmers_market",
+    "description": "In continuous operation since 1882 in the heart of downtown Roanoke, Southwest Virginia.",
+    "address": "213 Market St SE",
+    "city": "Roanoke",
+    "state_code": "VA",
+    "zip_code": "24011",
+    "latitude": 37.2721,
+    "longitude": -79.9387,
+    "contact_phone": "540-342-2028",
+    "website_url": "https://www.downtownroanoke.org",
+    "products_offered": [
+      "mountain honey",
+      "cured ham",
+      "fresh heirloom vegetables",
+      "plants & perennials",
+      "baked goods"
+    ],
+    "payment_methods": [
+      "SNAP/EBT",
+      "Cash",
+      "Card"
+    ],
+    "schedule": "Open 7 days a week 8:00 AM - 5:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "74f706b4-9377-452e-845c-dfa7c0879781",
+    "source_id": "USDA-VA-97341",
+    "name": "South of the James Farmers Market",
+    "entity_type": "farmers_market",
+    "description": "Beloved producer-grown community market in Forest Hill Park along the James River.",
+    "address": "New Kent Ave & 42nd St",
+    "city": "Richmond",
+    "state_code": "VA",
+    "zip_code": "23225",
+    "latitude": 37.5218,
+    "longitude": -77.4764,
+    "contact_phone": "804-508-4682",
+    "website_url": "https://www.growrva.com",
+    "products_offered": [
+      "Chesapeake oysters",
+      "pasture pork",
+      "organic berries",
+      "locally roasted coffee",
+      "fresh flowers",
+      "bread"
+    ],
+    "payment_methods": [
+      "SNAP Link",
+      "Credit Card",
+      "Cash"
+    ],
+    "schedule": "Saturdays 8:00 AM - 12:00 PM (Year Round)",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "b6113b87-5b8a-492e-9897-38f2f0860eb1",
+    "source_id": "USDA-VA-9372",
+    "name": "Falls Church Farmers Market",
+    "entity_type": "farmers_market",
+    "description": "Nationally acclaimed year-round Saturday market in Northern Virginia.",
+    "address": "300 Park Ave",
+    "city": "Falls Church",
+    "state_code": "VA",
+    "zip_code": "22046",
+    "latitude": 38.8856,
+    "longitude": -77.1729,
+    "contact_phone": "703-248-5077",
+    "website_url": "https://www.fallschurchva.gov/farmersmarket",
+    "products_offered": [
+      "certified organic veggies",
+      "grass-fed Angus beef",
+      "orchard fruit",
+      "microgreens",
+      "artisan pasta"
+    ],
+    "payment_methods": [
+      "SNAP",
+      "Card",
+      "Cash"
+    ],
+    "schedule": "Saturdays 8:00 AM - 12:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "3b459835-3497-4bdf-81a4-3c55f58b508c",
+    "source_id": "USDA-VA-48832",
+    "name": "Polyface Farm (Joel Salatin)",
+    "entity_type": "farm",
+    "description": "World-renowned pasture-based, beyond-organic, local-distribution regenerative farm.",
+    "address": "43 Loukin Dr",
+    "city": "Swoope",
+    "state_code": "VA",
+    "zip_code": "24479",
+    "latitude": 38.1672,
+    "longitude": -79.1843,
+    "contact_phone": "540-885-3590",
+    "website_url": "https://www.polyfacefarms.com",
+    "products_offered": [
+      "salad bar beef",
+      "pastured poultry",
+      "pigaerator pork",
+      "foraged eggs",
+      "pastured rabbit"
+    ],
+    "payment_methods": [
+      "Cash",
+      "Card",
+      "Online Store"
+    ],
+    "schedule": "Farm store open Mon-Fri 9:00 AM - 4:00 PM, Sat 9:00 AM - 12:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "044222bd-879d-4811-8e55-11e021c1f02e",
+    "source_id": "USDA-VA-93229",
+    "name": "Carter Mountain Orchard",
+    "entity_type": "farm",
+    "description": "Scenic Blue Ridge mountain orchard overlooking Thomas Jefferson's Monticello.",
+    "address": "1435 Carters Mountain Trail",
+    "city": "Charlottesville",
+    "state_code": "VA",
+    "zip_code": "22901",
+    "latitude": 37.9912,
+    "longitude": -78.4721,
+    "contact_phone": "434-977-1833",
+    "website_url": "https://chilesfamilyorchards.com/carter-mountain",
+    "products_offered": [
+      "pick-your-own peaches",
+      "apples",
+      "apple cider donuts",
+      "cider pressing",
+      "wine & hard cider"
+    ],
+    "payment_methods": [
+      "Cash",
+      "Credit Card"
+    ],
+    "schedule": "Daily 9:00 AM - 6:00 PM (Seasonal)",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "73c91f91-d270-412b-bb09-1afbb61bd6a8",
+    "source_id": "USDA-VA-73541",
+    "name": "Broadfork Farm",
+    "entity_type": "farm",
+    "description": "No-till Certified Naturally Grown family farm using biological soil fertility methods.",
+    "address": "9501 Deer Range Rd",
+    "city": "Moseley",
+    "state_code": "VA",
+    "zip_code": "23120",
+    "latitude": 37.4123,
+    "longitude": -77.7214,
+    "contact_phone": "804-301-2849",
+    "website_url": "https://www.broadforkfarm.net",
+    "products_offered": [
+      "certified naturally grown vegetables",
+      "wood-fired sourdough",
+      "heirloom garlic",
+      "salad mix"
+    ],
+    "payment_methods": [
+      "Online Farm Share",
+      "Card",
+      "Cash"
+    ],
+    "schedule": "Farm pickup & Richmond delivery",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "d1eb8dd2-39be-4ee2-b3ce-b9024f8094a0",
+    "source_id": "USDA-VA-8338",
+    "name": "Southern States Cooperative (Valley Ag Hub)",
+    "entity_type": "supplier_feed",
+    "description": "Farmer-owned cooperative serving the agricultural heart of the Shenandoah Valley with agronomy services.",
+    "address": "1200 S High St",
+    "city": "Harrisonburg",
+    "state_code": "VA",
+    "zip_code": "22801",
+    "latitude": 38.4312,
+    "longitude": -78.8876,
+    "contact_phone": "540-434-3856",
+    "website_url": "https://www.southernstates.com",
+    "products_offered": [
+      "livestock feed",
+      "pasture seed blends",
+      "bulk lime",
+      "liquid fertilizer",
+      "fencing supplies",
+      "veterinary health"
+    ],
+    "payment_methods": [
+      "Member Patronage",
+      "Commercial Terms",
+      "Card"
+    ],
+    "schedule": "Mon-Fri 7:30 AM - 5:00 PM, Sat 7:30 AM - 1:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "5c6f7eae-b6f9-4dcf-aa2b-d7ea50043b29",
+    "source_id": "USDA-VA-70472",
+    "name": "Seven Springs Farm Organic Supply",
+    "entity_type": "supplier_fertilizer",
+    "description": "Premier mid-Atlantic supplier of certified organic farming and bio-dynamic soil inputs and non-chemical pest controls.",
+    "address": "426 Jerry Ln NE",
+    "city": "Check",
+    "state_code": "VA",
+    "zip_code": "24072",
+    "latitude": 37.0094,
+    "longitude": -80.2812,
+    "contact_phone": "540-651-3228",
+    "website_url": "https://www.7springsfarm.com",
+    "products_offered": [
+      "OMRI organic fertilizers",
+      "kelp meal",
+      "greensand",
+      "beneficial nematodes",
+      "cover crop seeds",
+      "drip irrigation"
+    ],
+    "payment_methods": [
+      "Credit Card",
+      "Check",
+      "Online Orders"
+    ],
+    "schedule": "Mon-Fri 9:00 AM - 4:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "8a62c9c6-088e-4f4e-8d44-cbd569d1bc16",
+    "source_id": "USDA-VA-52955",
+    "name": "James River Equipment (John Deere)",
+    "entity_type": "supplier_equipment",
+    "description": "Full-service agricultural machinery sales, parts inventory, and certified mobile field technicians.",
+    "address": "2810 N Franklin St",
+    "city": "Christiansburg",
+    "state_code": "VA",
+    "zip_code": "24073",
+    "latitude": 37.1512,
+    "longitude": -80.4011,
+    "contact_phone": "540-382-6101",
+    "website_url": "https://www.jamesriverequipment.com",
+    "products_offered": [
+      "utility tractors",
+      "hay balers",
+      "rotary cutters",
+      "compact excavators",
+      "John Deere parts & mobile service"
+    ],
+    "payment_methods": [
+      "John Deere Financial",
+      "Card",
+      "Check"
+    ],
+    "schedule": "Mon-Fri 7:30 AM - 5:00 PM, Sat 8:00 AM - 12:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "4cb0d01c-8e96-4599-8b2f-e41a84f1cbbe",
+    "source_id": "USDA-VA-79215",
+    "name": "Virginia Cooperative Extension - Montgomery County",
+    "entity_type": "extension_office",
+    "description": "Virginia Tech and Virginia State University partnership providing on-the-ground scientific research and producer education.",
+    "address": "755 Roanoke St",
+    "city": "Christiansburg",
+    "state_code": "VA",
+    "zip_code": "24073",
+    "latitude": 37.1352,
+    "longitude": -80.3954,
+    "contact_phone": "540-382-5790",
+    "website_url": "https://montgomery.ext.vt.edu",
+    "products_offered": [
+      "soil testing kits (VT Soil Lab)",
+      "forage analysis",
+      "cattle management advice",
+      "small farm enterprise guides"
+    ],
+    "payment_methods": [
+      "County Subsidized / Free educational resources"
+    ],
+    "schedule": "Mon-Fri 8:00 AM - 5:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  },
+  {
+    "id": "15be6e0a-65f4-45c2-8d9d-8775148bae79",
+    "source_id": "USDA-VA-33281",
+    "name": "Shenandoah Valley Food Hub & Cold Storage",
+    "entity_type": "food_hub",
+    "description": "Centralized washing, grading, packing, and cold-chain facility for Shenandoah agricultural producers.",
+    "address": "1535 S Main St",
+    "city": "Harrisonburg",
+    "state_code": "VA",
+    "zip_code": "22801",
+    "latitude": 38.4285,
+    "longitude": -78.8912,
+    "contact_phone": "540-828-5674",
+    "website_url": "https://www.shenvalleyfood.org",
+    "products_offered": [
+      "aggregated apples & stone fruit",
+      "refrigerated freight",
+      "direct wholesale meat distribution",
+      "commercial kitchen"
+    ],
+    "payment_methods": [
+      "Wholesale Invoicing",
+      "ACH"
+    ],
+    "schedule": "Mon-Fri 6:00 AM - 5:00 PM",
+    "attributes": {
+      "verified": true,
+      "source": "USDA Local Food Portal & State Ag Registry"
+    }
+  }
+]
