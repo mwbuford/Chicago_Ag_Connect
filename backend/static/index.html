@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Chicago Ag Connect — Chicago Urban Farms, Markets & Food Access</title>
+  
+  <!-- MapLibre GL CSS & JS -->
+  <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
+  <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<!-- Welcome Homepage -->
+<div id="welcome-home" class="welcome-home-overlay">
+  <div class="welcome-home-inner">
+    <div class="welcome-brand">
+      <div class="brand-icon">🌱</div>
+      <h1>Chicago Ag <span>Connect</span></h1>
+      <p class="welcome-tagline">Connect Chicago farms with neighbors who need food.</p>
+    </div>
+    <p class="welcome-mission">
+      Chicago Ag Connect maps Chicago farmers markets, urban farms, and food-access sites so growers and neighbors can find each other —
+      inspired by organizations like <a href="https://www.urbangrowerscollective.org/" target="_blank" rel="noopener">Urban Growers Collective</a>.
+      Get urban agriculture advice for city lots, raised beds, and community gardens, plus SNAP/Link Match tips.
+    </p>
+    <ul class="welcome-values">
+      <li>🧺 Find Chicago markets, farm stands, and urban farms</li>
+      <li>🤝 Connect growers with neighbors who need fresh food</li>
+      <li>🌱 Urban ag advice for city soil, containers, and community gardens</li>
+    </ul>
+    <div class="welcome-actions">
+      <button type="button" id="btn-welcome-jump-in" class="welcome-btn-primary">Jump In — No Account Needed</button>
+      <button type="button" id="btn-welcome-create-account" class="welcome-btn-secondary">Create Free Account</button>
+    </div>
+    <p class="welcome-hint">Or pick where you'd like to start:</p>
+    <div class="welcome-cards">
+      <button type="button" class="welcome-card" data-welcome-target="map-panel">
+        <span class="welcome-card-icon">🧺</span>
+        <strong>Find Local Markets</strong>
+        <span>Chicago farms & markets</span>
+      </button>
+      <button type="button" class="welcome-card" data-welcome-target="advisory-panel">
+        <span class="welcome-card-icon">🌱</span>
+        <strong>Garden Advisory</strong>
+        <span>Soil, crops & frost dates</span>
+      </button>
+      <button type="button" class="welcome-card" data-welcome-target="learn-panel">
+        <span class="welcome-card-icon">📚</span>
+        <strong>Learn & Grow</strong>
+        <span>Backyard &amp; community gardens</span>
+      </button>
+      <button type="button" class="welcome-card" data-welcome-target="plant-doctor">
+        <span class="welcome-card-icon">🔬</span>
+        <strong>AI Plant Doctor</strong>
+        <span>Diagnose leaf diseases</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+  <!-- Top Header Navigation -->
+  <header>
+    <div class="brand">
+      <div class="brand-icon">🌱</div>
+      <div>
+        <h1>Chicago Ag <span>Connect</span></h1>
+        <p style="font-size: 0.72rem; color: #64748b; font-weight: 500;">Chicago Urban Farms, Markets & Food Access</p>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+      <button class="nav-tab active" data-tab="map-panel" id="tab-map">
+        <i data-lucide="shopping-bag"></i> Find Local Markets & Food
+      </button>
+      <button class="nav-tab" data-tab="advisory-panel" id="tab-advisory">
+        <i data-lucide="sprout"></i> My Garden & Land Advisory
+      </button>
+      <button class="nav-tab" data-tab="learn-panel" id="tab-learn">
+        <i data-lucide="book-open"></i> Learn & Grow
+      </button>
+      <button class="nav-tab ai-header-pill" id="btn-open-plant-doctor-header" title="Diagnose plant leaf or crop disease with custom neural net">
+        <i data-lucide="scan-line" style="width: 14px; height: 14px;"></i> 🔬 AI Plant Doctor
+      </button>
+    </div>
+
+    <!-- Chicago-only lock (no county / multi-state selector) -->
+    <div class="header-controls">
+      <button type="button" id="btn-open-welcome" class="auth-header-btn" title="About Chicago Ag Connect">Home</button>
+      <button type="button" id="btn-auth-header" class="auth-header-btn">Sign In</button>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span style="font-size: 0.8rem; font-weight: 700; color: #15803d; background:#dcfce7; padding:0.25rem 0.6rem; border-radius:999px;">🏙️ Chicago</span>
+        <select id="state-selector" class="state-select" style="display:none;" aria-hidden="true">
+          <option value="CHICAGO" selected>Chicago</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Body -->
+  <div class="app-container" id="app-container">
+
+    <!-- Left Sidebar Dynamic Panels -->
+    <aside class="sidebar" id="sidebar-container">
+
+      <!-- PANEL 1: Chicago Farms, Markets & Food Access -->
+      <section id="map-panel" class="sidebar-panel active">
+        <div class="panel-hero">
+          <h2>Chicago Farms & Markets</h2>
+          <p>Connect with urban farms, farmers markets, CSAs, and food-access sites across the city — and find where neighbors can get fresh food.</p>
+        </div>
+        <ol class="panel-steps">
+          <li><strong>Search near you</strong> — enter a Chicago address or zip</li>
+          <li><strong>Filter</strong> — markets, urban farms, SNAP/Link sites</li>
+          <li><strong>Tap a pin</strong> — hours, directions, and garden tips</li>
+        </ol>
+
+        <div class="panel-section">
+          <div class="panel-section-title">📍 Your Location</div>
+        <div class="address-autocomplete-wrapper">
+          <label class="input-label">
+            <i data-lucide="map-pin" style="width: 14px; height: 14px; color: #ea580c;"></i>
+            Find Markets Near Your Address:
+          </label>
+          <div class="autocomplete-input-group">
+            <span class="autocomplete-leading-icon">
+              <i data-lucide="crosshair" style="width: 16px; height: 16px; color: #ea580c;"></i>
+            </span>
+            <input type="text" 
+                   id="address-input-map" 
+                   class="autocomplete-input" 
+                   placeholder="Type street address, city, or zip code..." 
+                   autocomplete="off">
+            <button type="button" class="autocomplete-trailing-btn" id="btn-clear-input-map" title="Clear address">
+              <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+            </button>
+            <div id="autocomplete-dropdown-map" class="autocomplete-dropdown"></div>
+          </div>
+        </div>
+
+        <!-- Customizable Radius Slider Container -->
+        <div class="radius-slider-box" id="radius-slider-container">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <label class="input-label" style="margin-bottom: 0;">
+              <i data-lucide="disc" style="width: 13px; height: 13px; color: var(--secondary);"></i>
+              Search Radius Buffer:
+            </label>
+            <span class="radius-badge" id="radius-slider-value">20 miles</span>
+          </div>
+          <input type="range" id="radius-range-slider" min="5" max="50" step="5" value="20" class="custom-range-slider">
+          <div style="display: flex; justify-content: space-between; font-size: 0.68rem; color: #94a3b8; margin-top: 2px;">
+            <span>5 mi</span>
+            <span>20 mi</span>
+            <span>35 mi</span>
+            <span>50 mi</span>
+          </div>
+        </div>
+
+        <!-- Radius Active Alert Banner -->
+        <div id="radius-banner-map" class="radius-alert-banner">
+          <div style="display: flex; align-items: center; gap: 0.4rem;">
+            <span>📍</span>
+            <span id="radius-banner-text">Showing markets within 20 miles of your address</span>
+          </div>
+          <span style="cursor: pointer; text-decoration: underline; font-size: 0.72rem;" id="btn-clear-address-map">Clear</span>
+        </div>
+
+        <!-- County selector removed — Chicago-only scope -->
+        <div class="county-select-container" id="county-select-container-map" style="display: none;" hidden>
+          <select id="county-selector" class="county-dropdown"><option value="all">all</option></select>
+        </div>
+
+        </div>
+
+        <div class="panel-section">
+          <div class="panel-section-title">🛒 Product Search</div>
+        <!-- Product-First Search (Phase 3) -->
+        <div class="product-search-box">
+          <label class="input-label">
+            <i data-lucide="shopping-cart" style="width: 14px; height: 14px; color: #7c3aed;"></i>
+            What do you want to buy?
+          </label>
+          <div style="display: flex; gap: 0.35rem;">
+            <input type="text" id="product-search-input" class="search-input" placeholder="e.g. raw honey, goat milk, sourdough..." style="flex: 1;">
+            <select id="product-search-when" class="county-dropdown" style="width: auto; min-width: 110px; font-size: 0.75rem;">
+              <option value="any">Any time</option>
+              <option value="today">Today</option>
+              <option value="this_weekend">This weekend</option>
+            </select>
+            <button type="button" id="btn-product-search" class="ai-card-action-btn" style="white-space: nowrap;">Search</button>
+          </div>
+          <div id="product-search-results" class="product-search-results"></div>
+        </div>
+        </div>
+
+        <div class="panel-section">
+          <div class="panel-section-title">🔎 Browse & Filter</div>
+        <!-- Search Bar -->
+        <div class="search-box">
+          <i data-lucide="search" class="search-icon" style="width: 16px; height: 16px;"></i>
+          <input type="text" id="map-search-input" class="search-input" placeholder="Search markets, berries, honey, baked goods...">
+        </div>
+
+        <!-- Category Filters with Select All Button -->
+        <div>
+          <div class="filter-toolbar-header">
+            <span style="font-size: 0.72rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Categories:</span>
+            <button class="filter-pill btn-toggle-all active" id="btn-select-all" style="font-size: 0.7rem; padding: 0.2rem 0.6rem;">
+              ✓ Select All
+            </button>
+          </div>
+
+          <div class="filter-group" id="entity-filters">
+            <button class="filter-pill active blue" data-type="farmers_market">🧺 Farmers Markets</button>
+            <button class="filter-pill active" data-type="farm_stand">🚜 Farm Stands</button>
+            <button class="filter-pill active amber" data-type="csa">📦 CSA / Farm Boxes</button>
+            <button class="filter-pill active purple" data-type="agritourism">🍎 U-Pick & Orchards</button>
+            <button class="filter-pill active teal" data-type="food_hub">🏛️ Food Hubs</button>
+            <button class="filter-pill active" data-type="urban_farm" style="background:#fef9c3;color:#854d0e;">🌿 Urban Farms</button>
+          </div>
+          
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.4rem;">
+            <button class="filter-chip" id="chip-snap">
+              <span>💳</span> SNAP / Link Match
+            </button>
+            <button class="filter-chip" id="chip-organic">
+              <span>🌿</span> Certified Organic
+            </button>
+          </div>
+        </div>
+
+        <!-- Result count & reset -->
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: var(--text-muted); padding: 0.2rem 0;">
+          <span id="results-count" style="font-weight: 600;">Loading locations...</span>
+          <span style="cursor: pointer; color: var(--primary); font-weight: 700;" id="btn-reset-filters">Reset Filters</span>
+        </div>
+
+        <!-- Location Cards List -->
+        <div class="location-list" id="location-cards-container"></div>
+        </div>
+      </section>
+
+      <!-- PANEL 2: Home Garden & Land Advisory Engine (Wide Layout) -->
+      <section id="advisory-panel" class="sidebar-panel">
+
+        <div class="panel-hero advisory-hero">
+          <div class="advisory-hero-top">
+            <h2>🌱 Garden & Land Advisory</h2>
+            <span class="badge advisory-badge" id="advisory-badge-county">Your Area</span>
+          </div>
+          <p id="advisory-subtitle">Personalized planting dates, soil guidance, and crop picks for your property.</p>
+        </div>
+        <ol class="panel-steps">
+          <li><strong>Enter your address</strong> — unlock local soil & climate data</li>
+          <li><strong>Review your report</strong> — frost dates, crops, and native plants</li>
+          <li><strong>Use AI tools</strong> — ask the agronomist or start your walkthrough plan</li>
+        </ol>
+
+        <div class="panel-section">
+          <div class="panel-section-title">📍 Your Property</div>
+        <!-- Address Autocomplete on Advisory Tab -->
+        <div class="panel-input-card">
+          <label class="input-label" style="margin-bottom: 0.35rem;">
+            <i data-lucide="compass" style="width: 14px; height: 14px; color: var(--primary);"></i>
+            Enter Property Address or Zip for Custom Garden Analysis:
+          </label>
+          <div class="address-autocomplete-wrapper">
+            <div class="autocomplete-input-group">
+              <span class="autocomplete-leading-icon">
+                <i data-lucide="search" style="width: 15px; height: 15px; color: var(--primary);"></i>
+              </span>
+              <input type="text" 
+                     id="address-input-advisory" 
+                     class="autocomplete-input" 
+                     placeholder="Start typing address or city (e.g. 500 S Main St, Normal, IL)..." 
+                     autocomplete="off">
+              <button type="button" class="autocomplete-trailing-btn" id="btn-clear-input-advisory" title="Clear address">
+                <i data-lucide="x" style="width: 14px; height: 14px;"></i>
+              </button>
+              <div id="autocomplete-dropdown-advisory" class="autocomplete-dropdown"></div>
+            </div>
+          </div>
+          <p class="panel-hint">Type a Chicago address or zip for urban soil, frost dates, and crop advice.</p>
+        </div>
+
+        <div class="county-select-container" id="county-select-container-advisory" style="display: none;" hidden>
+          <select id="county-selector-advisory" class="county-dropdown"><option value="all">all</option></select>
+        </div>
+        </div>
+
+        <div class="panel-section">
+          <div class="panel-section-title">📊 Your Local Report</div>
+        <div class="stat-grid" id="advisory-stats">
+          <div class="stat-box">
+            <div class="stat-label">Native Soil Type</div>
+            <div class="stat-val" id="soil-series-name">—</div>
+            <div class="stat-sub" id="soil-texture-desc">Enter address above</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Hardiness Zone</div>
+            <div class="stat-val" id="climate-zone">—</div>
+            <div class="stat-sub" id="frost-free-days">Frost-free days</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Last Spring Frost</div>
+            <div class="stat-val" id="last-spring-frost" style="color: #0284c7;">—</div>
+            <div class="stat-sub">Safe for warm transplants</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">First Fall Freeze</div>
+            <div class="stat-val" id="first-fall-frost" style="color: #b45309;">—</div>
+            <div class="stat-sub">Harvest before this date</div>
+          </div>
+        </div>
+
+        <!-- Soil Health & Raised Bed Advice -->
+        <div class="tip-box" id="soil-suitability-box">
+          <strong>🌿 Local Soil & Raised Bed Guidance:</strong><br>
+          <span id="soil-garden-summary">Raised beds warm up faster in spring and provide effortless drainage for tomatoes and peppers.</span>
+        </div>
+
+        <!-- Top Recommended Backyard Crops (2-Column Grid) -->
+        <div class="section-title">
+          <i data-lucide="check-circle-2" style="width: 17px; height: 17px; color: var(--primary);"></i>
+          Top Beginner & Backyard Crops for this Climate
+        </div>
+        <div id="garden-crops-list" class="crops-grid-container"></div>
+
+        <!-- State & Regional Native Species Recommendations -->
+        <div class="section-title">
+          <i data-lucide="flower-2" style="width: 17px; height: 17px; color: #16a34a;"></i>
+          Native & Region-Specific Plants for this Area
+        </div>
+        <p style="font-size: 0.76rem; color: #64748b; margin-top: -0.15rem; margin-bottom: 0.45rem;">
+          Naturally adapted to local soils, seasonal rainfall, and pollinator networks with zero synthetic fertilizers.
+        </p>
+        <div id="native-plants-list" class="crops-grid-container"></div>
+
+        <!-- Organic Soil Recipe -->
+        <div class="section-title">
+          <i data-lucide="sparkles" style="width: 17px; height: 17px; color: #7e22ce;"></i>
+          Organic Raised Bed Soil Recipe
+        </div>
+        <div id="soil-recipe-list" style="font-size: 0.8rem; display: flex; flex-direction: column; gap: 0.4rem;"></div>
+
+        <!-- Monthly Garden Calendar -->
+        <div class="section-title">
+          <i data-lucide="calendar" style="width: 17px; height: 17px; color: #0284c7;"></i>
+          Backyard Garden Seasonal Calendar
+        </div>
+        <div id="garden-calendar-list" style="font-size: 0.8rem;"></div>
+
+        <!-- Pitfalls to Avoid -->
+        <div class="section-title" style="color: #b91c1c;">
+          <i data-lucide="alert-triangle" style="width: 17px; height: 17px; color: #b91c1c;"></i>
+          Common Gardening Mistakes to Avoid in this Area
+        </div>
+        <div id="garden-pitfalls-list" style="font-size: 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem;"></div>
+        </div>
+
+        <div class="panel-section">
+          <div class="panel-section-title">🤖 AI Tools</div>
+        <div class="ai-hub-container">
+          <div class="ai-feature-card plant-doctor-trigger" id="btn-trigger-plant-doctor">
+            <div class="ai-card-icon">
+              <i data-lucide="scan-line" style="width: 20px; height: 20px; color: #16a34a;"></i>
+            </div>
+            <div class="ai-card-body">
+              <div class="ai-card-title">
+                <span>🔬 AI Plant Doctor</span>
+                <span class="model-badge">Custom CNN</span>
+              </div>
+              <p class="ai-card-desc">Upload a leaf photo to diagnose diseases and get organic remedies.</p>
+            </div>
+            <button type="button" class="ai-card-action-btn">Scan Leaf <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i></button>
+          </div>
+
+          <div class="ai-chat-drawer" id="agronomy-chat-drawer">
+            <div class="ai-chat-header" id="toggle-chat-drawer">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span class="ai-pulse-dot"></span>
+                <span style="font-weight: 700; font-size: 0.88rem; color: #0f172a;">💬 Ask Chicago Urban Agronomist</span>
+                <span class="model-badge" style="background: #e0f2fe; color: #0369a1;">Local SLM</span>
+              </div>
+              <span style="font-size: 0.75rem; color: #64748b;" id="chat-toggle-icon">▼</span>
+            </div>
+            <div class="ai-chat-content" id="agronomy-chat-body">
+              <p style="font-size: 0.76rem; color: #64748b; margin-bottom: 0.5rem;">
+                Chicago urban ag advice for <strong id="chat-active-location">your area</strong> — city soil, raised beds, markets &amp; food access.
+              </p>
+              <div style="display: flex; gap: 0.3rem; margin-bottom: 0.6rem; flex-wrap: wrap;">
+                <button class="prompt-chip agronomy-mode-btn active" data-mode="gardener">🌱 Backyard Garden</button>
+                <button class="prompt-chip agronomy-mode-btn" data-mode="homesteader">🤝 Community Garden</button>
+                <button class="prompt-chip agronomy-mode-btn" data-mode="small_farm">🧺 Farmers Market</button>
+              </div>
+              <div class="prompt-chips-container"></div>
+              <div class="chat-thread" id="agronomy-chat-thread">
+                <div class="chat-msg ai">
+                  <div class="msg-bubble">👋 Ask about Chicago backyard beds, community garden plots, lead-safe soil, or selling at neighborhood farmers markets.</div>
+                </div>
+              </div>
+              <div class="chat-input-bar">
+                <input type="text" id="agronomy-query-input" placeholder="Ask about Chicago urban agriculture..." autocomplete="off">
+                <button id="btn-send-agronomy-query" type="button" title="Send question">
+                  <i data-lucide="send" style="width: 15px; height: 15px;"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-feature-card" id="btn-generate-story-map" style="border-color: #bfdbfe; background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);">
+            <div class="ai-card-icon" style="background: #dbeafe;">
+              <i data-lucide="map" style="width: 20px; height: 20px; color: #2563eb;"></i>
+            </div>
+            <div class="ai-card-body">
+              <div class="ai-card-title">
+                <span>🗺️ Garden Walkthrough Plan</span>
+                <span class="model-badge" style="background: #dbeafe; color: #1d4ed8;">Step-by-Step</span>
+              </div>
+              <p class="ai-card-desc">An 8-step guided plan for your property — climate, soil, zones, layout, crops, and a 90-day checklist.</p>
+            </div>
+            <button type="button" class="ai-card-action-btn" style="background: #2563eb;">Start Walkthrough</button>
+          </div>
+        </div>
+        </div>
+
+      </section>
+
+      <!-- PANEL 3: Learn & Grow Resource Hub (Phase 6) -->
+      <section id="learn-panel" class="sidebar-panel">
+        <div class="panel-hero">
+          <h2>📚 Learn & Grow</h2>
+          <p>Chicago paths for backyard plots, community gardens, and selling at neighborhood farmers markets.</p>
+        </div>
+        <ol class="panel-steps">
+          <li><strong>Pick a path</strong> — backyard garden, community garden plot, or market selling</li>
+          <li><strong>Work through modules</strong> — checklists built for city lots, raised beds &amp; shared plots</li>
+          <li><strong>Get help</strong> — jump to AI chat or your garden walkthrough anytime</li>
+        </ol>
+        <div id="learning-paths-container" class="learning-paths-grid"></div>
+        <div id="learning-path-detail" style="display: none;"></div>
+      </section>
+
+    </aside>
+
+    <!-- Main Map Viewport -->
+    <main class="map-view-container">
+      <div id="map"></div>
+
+    <!-- Floating Map Helper Badge -->
+    <div class="map-instructions" id="map-hint">
+      📍 <strong>Chicago Urban Food Map:</strong> Showing <span id="map-active-scope">Chicago</span>. Click any marker for hours, website, & directions.
+    </div>
+  </main>
+</div>
+
+<!-- ========================================== -->
+<!-- AI Plant Doctor Modal (Custom CNN Vision)  -->
+<!-- ========================================== -->
+<div class="modal-overlay" id="plant-doctor-modal" style="display: none;">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <i data-lucide="scan-line" style="width: 22px; height: 22px; color: #16a34a;"></i>
+        <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: #0f172a;">AI Plant & Disease Doctor</h3>
+      </div>
+      <button class="modal-close-btn" id="btn-close-doctor-modal" title="Close modal">
+        <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <p style="font-size: 0.82rem; color: #64748b; margin-top: 0; margin-bottom: 0.8rem;">
+        Upload a clear photo of a plant leaf, blossom, or lesion to run instant pathology classification using our custom in-house <strong>PlantPathologyNet</strong>.
+      </p>
+
+      <!-- Upload Dropzone -->
+      <div class="upload-dropzone" id="doctor-dropzone">
+        <input type="file" id="doctor-file-input" accept="image/*" style="display: none;">
+        <div id="dropzone-idle-state">
+          <i data-lucide="upload-cloud" style="width: 36px; height: 36px; color: #16a34a; margin-bottom: 0.4rem;"></i>
+          <div style="font-weight: 700; font-size: 0.9rem; color: #0f172a;">Click to browse or drop leaf photo here</div>
+          <div style="font-size: 0.74rem; color: #94a3b8; margin-top: 0.2rem;">Supports JPEG, PNG, WebP (under 10MB)</div>
+        </div>
+        <div id="dropzone-preview-state" style="display: none;">
+          <img id="doctor-preview-img" src="" alt="Leaf Preview" class="dropzone-img-preview">
+          <div style="font-size: 0.75rem; color: #475569; margin-top: 0.3rem;">Click to choose another photo</div>
+        </div>
+      </div>
+
+      <!-- Loading State Spinner -->
+      <div id="doctor-loading-state" style="display: none; text-align: center; padding: 1.5rem 0;">
+        <div class="spinner-ring"></div>
+        <div style="font-size: 0.85rem; font-weight: 700; color: #16a34a; margin-top: 0.6rem;">
+          Running PlantPathologyNet Deep Vision Inference...
+        </div>
+        <div style="font-size: 0.75rem; color: #94a3b8;">Analyzing foliar spectrum, concentric lesions, and chlorosis</div>
+      </div>
+
+      <!-- Diagnosis Results Container -->
+      <div id="doctor-result-container" style="display: none; margin-top: 1rem;">
+        <!-- Top Banner -->
+        <div class="diag-header-card" id="diag-header-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+              <span class="diag-species-tag" id="diag-species">Tomato</span>
+              <h4 class="diag-condition-title" id="diag-condition">Early Blight (Alternaria solani)</h4>
+            </div>
+            <div class="diag-conf-badge" id="diag-confidence-badge">98.4% Confidence</div>
+          </div>
+          <div class="diag-category-badge" id="diag-category">Fungal Disease</div>
+        </div>
+
+        <!-- Regional Alert if applicable -->
+        <div id="diag-regional-note" class="diag-alert-box" style="display: none;"></div>
+
+        <!-- Symptoms -->
+        <div class="diag-section">
+          <div class="diag-section-title">🔍 Visual Symptoms Identified</div>
+          <ul id="diag-symptoms-list" class="diag-list"></ul>
+        </div>
+
+        <!-- Organic Remedies -->
+        <div class="diag-section">
+          <div class="diag-section-title">🌱 Immediate Organic Remedies</div>
+          <ul id="diag-organic-list" class="diag-list organic"></ul>
+        </div>
+
+        <!-- Cultural Prevention -->
+        <div class="diag-section">
+          <div class="diag-section-title">🛡️ Long-Term Cultural Prevention</div>
+          <ul id="diag-prevention-list" class="diag-list prevention"></ul>
+        </div>
+
+        <!-- Top-3 Probabilities -->
+        <div class="diag-section" style="margin-bottom: 0.5rem;">
+          <div class="diag-section-title">📊 Top Model Class Probabilities</div>
+          <div id="diag-top-k-bars" style="display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.4rem;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Auth Modal (Phase 0) -->
+<div class="modal-overlay" id="auth-modal" style="display: none;">
+  <div class="modal-card" style="max-width: 420px;">
+    <div class="modal-header">
+      <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800;">Sign in to Chicago Ag Connect</h3>
+      <button class="modal-close-btn" id="btn-close-auth-modal"><i data-lucide="x"></i></button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size: 0.78rem; color: #64748b; margin-bottom: 0.75rem;">Log vendors you saw at markets or report your farm's presence and products.</p>
+      <div id="auth-form-login">
+        <input type="email" id="auth-email" class="search-input" placeholder="Email" style="margin-bottom: 0.5rem; width: 100%;">
+        <input type="password" id="auth-password" class="search-input" placeholder="Password" style="margin-bottom: 0.5rem; width: 100%;">
+        <input type="text" id="auth-display-name" class="search-input" placeholder="Display name (register only)" style="margin-bottom: 0.5rem; width: 100%; display: none;">
+        <button type="button" id="btn-auth-submit" class="ai-card-action-btn" style="width: 100%; justify-content: center; margin-top: 0.25rem;">Sign In</button>
+        <button type="button" id="btn-auth-toggle-mode" style="background: none; border: none; color: #0284c7; font-size: 0.75rem; margin-top: 0.5rem; cursor: pointer; width: 100%;">Need an account? Register</button>
+      </div>
+      <div id="auth-error" style="color: #b91c1c; font-size: 0.75rem; margin-top: 0.5rem; display: none;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Market Attendance Modal (Phase 2) -->
+<div class="modal-overlay" id="market-attendance-modal" style="display: none;">
+  <div class="modal-card" style="max-width: 640px;">
+    <div class="modal-header">
+      <div>
+        <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800;" id="market-modal-title">Market Vendors</h3>
+        <p style="font-size: 0.72rem; color: #64748b; margin: 0.15rem 0 0 0;" id="market-modal-subtitle"></p>
+      </div>
+      <button class="modal-close-btn" id="btn-close-market-modal"><i data-lucide="x"></i></button>
+    </div>
+    <div class="modal-body">
+      <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem;">
+        <label style="font-size: 0.75rem; font-weight: 700; color: #475569;">Date:</label>
+        <input type="date" id="attendance-date-picker" class="search-input" style="width: auto;">
+        <button type="button" id="btn-load-attendance" class="prompt-chip">Refresh</button>
+      </div>
+
+      <div class="nav-tabs" style="margin-bottom: 0.75rem;">
+        <button class="nav-tab active" data-market-tab="view" id="tab-attendance-view">Who Was There</button>
+        <button class="nav-tab" data-market-tab="log" id="tab-attendance-log">Log Vendors I Saw</button>
+        <button class="nav-tab" data-market-tab="vendor" id="tab-attendance-vendor">I'm a Vendor</button>
+      </div>
+
+      <div id="panel-attendance-view">
+        <div id="attendance-list" class="attendance-list"></div>
+      </div>
+
+      <div id="panel-attendance-log" style="display: none;">
+        <p style="font-size: 0.76rem; color: #64748b; margin-bottom: 0.5rem;">Record who you saw selling at this market. Sign in required.</p>
+        <div id="community-vendor-rows"></div>
+        <button type="button" id="btn-add-vendor-row" class="prompt-chip" style="margin: 0.5rem 0;">+ Add another vendor</button>
+        <button type="button" id="btn-submit-community-visit" class="ai-card-action-btn">Submit Community Log</button>
+      </div>
+
+      <div id="panel-attendance-vendor" style="display: none;">
+        <p style="font-size: 0.76rem; color: #64748b; margin-bottom: 0.5rem;">Report your booth presence and what you're selling today.</p>
+        <div id="vendor-profile-status" style="font-size: 0.78rem; margin-bottom: 0.5rem;"></div>
+        <input type="text" id="vendor-products-input" class="search-input" placeholder="Products (comma separated): eggs, honey, tomatoes" style="width: 100%; margin-bottom: 0.5rem;">
+        <input type="text" id="vendor-booth-hint" class="search-input" placeholder="Booth location hint (optional)" style="width: 100%; margin-bottom: 0.5rem;">
+        <button type="button" id="btn-create-vendor-profile" class="prompt-chip" style="margin-bottom: 0.5rem;">Create Vendor Profile</button>
+        <button type="button" id="btn-submit-vendor-presence" class="ai-card-action-btn">Report My Presence</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Garden Walkthrough Modal (Phase 5) -->
+<div class="modal-overlay" id="story-map-modal" style="display: none;">
+  <div class="modal-card story-walkthrough-card">
+    <div class="modal-header">
+      <div>
+        <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800;" id="story-map-title">Garden Walkthrough</h3>
+        <p style="font-size: 0.72rem; color: #64748b; margin: 0.15rem 0 0 0;" id="story-map-subtitle"></p>
+      </div>
+      <button class="modal-close-btn" id="btn-close-story-map"><i data-lucide="x"></i></button>
+    </div>
+    <div class="modal-body">
+      <div id="story-map-loading" class="story-map-loading">
+        <div class="story-map-spinner"></div>
+        <p>Building your personalized walkthrough…</p>
+      </div>
+      <div id="story-map-content" class="story-walkthrough" style="display: none;">
+        <div class="story-progress-bar"><div id="story-progress-fill" class="story-progress-fill"></div></div>
+        <div class="story-step-nav" id="story-step-dots"></div>
+        <div id="story-map-slide" class="story-walkthrough-slide"></div>
+        <div id="story-zone-diagram" class="story-zone-diagram"></div>
+        <div class="story-map-nav">
+          <button type="button" class="prompt-chip" id="btn-story-prev">← Previous</button>
+          <span id="story-slide-counter" class="story-slide-counter">Step 1 of 8</span>
+          <button type="button" class="prompt-chip" id="btn-story-next">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/app.js?v=20260903-popup"></script>
+<script src="/static/marketplace.js"></script>
+<script src="/static/phases.js"></script>
+</body>
+</html>

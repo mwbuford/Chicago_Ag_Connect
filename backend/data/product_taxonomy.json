@@ -1,0 +1,28 @@
+{
+  "tags": [
+    {"id": "eggs", "label": "Eggs", "synonyms": ["egg", "pasture eggs", "free range eggs", "duck eggs"]},
+    {"id": "raw_honey", "label": "Raw Honey", "synonyms": ["honey", "local honey", "bee honey"]},
+    {"id": "goat_milk", "label": "Goat Milk", "synonyms": ["raw goat milk", "goat dairy", "goat cheese", "chevre"]},
+    {"id": "cow_milk", "label": "Cow Milk", "synonyms": ["raw milk", "dairy milk", "fresh milk"]},
+    {"id": "beef", "label": "Beef", "synonyms": ["grass fed beef", "steak", "ground beef", "pasture beef"]},
+    {"id": "pork", "label": "Pork", "synonyms": ["bacon", "sausage", "pasture pork", "heritage pork"]},
+    {"id": "chicken", "label": "Chicken", "synonyms": ["whole chicken", "pasture chicken", "rotisserie chicken"]},
+    {"id": "lamb", "label": "Lamb", "synonyms": ["lamb chops", "grass fed lamb"]},
+    {"id": "tomatoes", "label": "Tomatoes", "synonyms": ["heirloom tomatoes", "cherry tomatoes", "tomato"]},
+    {"id": "berries", "label": "Berries", "synonyms": ["strawberries", "blueberries", "blackberries", "raspberries"]},
+    {"id": "apples", "label": "Apples", "synonyms": ["apple", "heirloom apples", "cider apples"]},
+    {"id": "peaches", "label": "Peaches", "synonyms": ["peach", "stone fruit"]},
+    {"id": "squash", "label": "Squash", "synonyms": ["butternut squash", "zucchini", "pumpkin"]},
+    {"id": "greens", "label": "Greens", "synonyms": ["lettuce", "kale", "spinach", "chard", "salad mix"]},
+    {"id": "herbs", "label": "Herbs", "synonyms": ["basil", "cilantro", "rosemary", "thyme", "mint"]},
+    {"id": "mushrooms", "label": "Mushrooms", "synonyms": ["shiitake", "oyster mushrooms", "lion's mane"]},
+    {"id": "bread", "label": "Bread & Bakery", "synonyms": ["sourdough", "baked goods", "pastries", "croissants", "loaf"]},
+    {"id": "jam", "label": "Jam & Preserves", "synonyms": ["jelly", "preserves", "marmalade"]},
+    {"id": "flowers", "label": "Cut Flowers", "synonyms": ["bouquets", "sunflowers", "floral"]},
+    {"id": "maple_syrup", "label": "Maple Syrup", "synonyms": ["syrup", "maple"]},
+    {"id": "coffee", "label": "Coffee", "synonyms": ["roasted coffee", "espresso beans"]},
+    {"id": "soap", "label": "Handmade Soap", "synonyms": ["goat milk soap", "artisan soap"]},
+    {"id": "csa_box", "label": "CSA Vegetable Box", "synonyms": ["farm box", "produce share", "weekly box"]},
+    {"id": "organic_produce", "label": "Organic Produce", "synonyms": ["organic vegetables", "organic fruit", "certified organic"]}
+  ]
+}

@@ -1,0 +1,397 @@
+[
+  {
+    "path_id": "backyard_garden",
+    "title": "Start a Chicago Backyard Garden",
+    "description": "From balcony pots to raised beds on a city lot — lead-safe soil, Zone 5/6 timing, and beginner crops that work in Chicago yards.",
+    "icon": "🌱",
+    "target_audience": "Chicago home gardeners (yards, patios, parkways)",
+    "agronomy_mode": "gardener",
+    "cta_label": "Get My Chicago Garden Plan",
+    "cta_action": "story_map",
+    "sub_paths": [
+      {
+        "sub_path_id": "container",
+        "label": "🪣 Balcony & Patio Pots",
+        "description": "Under 100 sq ft — pots, grow bags, fire escapes & porches",
+        "icon": "🪣",
+        "modules": ["bg_site", "bg_soil", "bg_containers", "bg_plant_beginner", "bg_water", "bg_pests_easy", "bg_harvest"]
+      },
+      {
+        "sub_path_id": "small_beds",
+        "label": "🛏️ Small Raised Beds",
+        "description": "1–3 raised beds on a Chicago lot (lead-safe soil mix)",
+        "icon": "🛏️",
+        "modules": ["bg_site", "bg_soil", "bg_beds_small", "bg_plant_beginner", "bg_water", "bg_pests", "bg_harvest"]
+      },
+      {
+        "sub_path_id": "medium_garden",
+        "label": "🌿 Full Backyard Beds",
+        "description": "400–1,000 sq ft — mixed raised beds on a city lot",
+        "icon": "🌿",
+        "modules": ["bg_site", "bg_soil", "bg_beds_medium", "bg_plant_full", "bg_water", "bg_pests", "bg_harvest", "bg_seeds"]
+      },
+      {
+        "sub_path_id": "large_garden",
+        "label": "🪴 Double Lot / Shared Yard",
+        "description": "Bigger city lot or shared backyard — rotation & succession planting",
+        "icon": "🪴",
+        "modules": ["bg_site", "bg_soil", "bg_beds_large", "bg_plant_full", "bg_water", "bg_pests", "bg_harvest", "bg_seeds", "bg_rotation"]
+      }
+    ],
+    "modules": {
+      "bg_site": {
+        "module_id": "bg_site",
+        "title": "Choose Your Chicago Site",
+        "summary": "Sun, hose access, and lead-safe growing space decide whether a city garden thrives before you plant a single seed.",
+        "checklist": [
+          "Walk your yard or patio at 9am, noon, and 3pm — note where full sun lands for 6+ hours",
+          "Prefer raised beds or containers over digging native Chicago soil until you know lead levels",
+          "Pick a spot within hose-reach of an outdoor spigot (or plan for watering cans upstairs)",
+          "Call 811 before you dig for any in-ground beds",
+          "Check condo / landlord rules if you are on a balcony, porch, or parkway"
+        ],
+        "ai_prompt_suggestion": "How do I find the sunniest safe spot for a vegetable garden on a Chicago lot?",
+        "estimated_weeks": 1
+      },
+      "bg_soil": {
+        "module_id": "bg_soil",
+        "title": "Lead-Safe Soil Basics",
+        "summary": "Chicago lots often have contaminated soil — test first, then grow in clean raised-bed mix.",
+        "checklist": [
+          "Get an urban soil lead test (extension lab or home kit) before growing food in native ground",
+          "If lead is a concern, use raised beds lined with landscape fabric and filled with bagged vegetable mix + compost",
+          "Do the jar test on any native soil: sand/silt/clay layers after overnight settling",
+          "Check drainage: dig a 12-inch hole, fill with water, time how long it drains",
+          "Mulch paths so kids and pets do not track bare city soil indoors"
+        ],
+        "ai_prompt_suggestion": "How do I test Chicago soil for lead and set up safe raised beds?",
+        "estimated_weeks": 1
+      },
+      "bg_containers": {
+        "module_id": "bg_containers",
+        "title": "Set Up Your Container Garden",
+        "summary": "The right container + the right mix is everything — most beginner failures come from soil that compacts or pots that don't drain.",
+        "checklist": [
+          "Use containers at least 12 inches deep for tomatoes and peppers; 8 inches for herbs and greens",
+          "Drill or punch drainage holes if the pot doesn't have them — no drainage = root rot",
+          "Fill with a light potting mix (not garden soil — it compacts in pots)",
+          "Place in your sunniest spot; south- or west-facing walls reflect extra heat",
+          "Water when the top 1 inch of soil is dry — containers dry out 2–3× faster than beds",
+          "Feed with a balanced liquid fertilizer every 2 weeks (containers need more frequent feeding)",
+          "Top tomato picks for containers: Tumbling Tom, Sweet 100, Patio; greens: any lettuce, spinach, Swiss chard"
+        ],
+        "ai_prompt_suggestion": "What vegetables grow best in containers on a patio or balcony?",
+        "estimated_weeks": 1
+      },
+      "bg_beds_small": {
+        "module_id": "bg_beds_small",
+        "title": "Build 1–3 Raised Beds",
+        "summary": "A 4×8 raised bed is the most productive small-space garden unit — warm soil, no compaction, full weed control.",
+        "checklist": [
+          "Start with one 4×8 ft bed — you can always add more once you know what you're doing",
+          "Cedar, Douglas fir, or composite lumber are best (avoid pressure-treated for veggies)",
+          "Build sides 10–12 inches tall for most crops; 18 inches for root crops",
+          "Fill with: 60% topsoil, 30% compost, 10% coarse perlite or aged wood chips",
+          "Level the ground before placing; put cardboard underneath to kill grass",
+          "Install a soaker hose or drip line before filling — much easier now than later",
+          "Mulch the top 2–3 inches with straw or shredded leaves after planting"
+        ],
+        "ai_prompt_suggestion": "What size raised beds should I build and what should I fill them with?",
+        "estimated_weeks": 1
+      },
+      "bg_beds_medium": {
+        "module_id": "bg_beds_medium",
+        "title": "Plan Your Bed Layout",
+        "summary": "At 400–1,000 sq ft you have room for a real kitchen garden — plan beds by family to make rotation easier.",
+        "checklist": [
+          "Group beds by plant family: nightshades, brassicas, legumes, roots, cucurbits",
+          "Leave 18–24 inch paths between beds — wide enough to kneel and work",
+          "Put tallest plants (tomatoes, corn, beans on trellis) on the north side so they don't shade shorter crops",
+          "Build 3–5 raised beds or define rows with string and stakes",
+          "Install a simple drip or soaker system per zone — split by water-need (heavy vs light feeders)",
+          "Reserve one bed for perennial herbs (basil, oregano, chives, thyme) — plant once, harvest forever",
+          "Add compost 2–3 inches thick before every season"
+        ],
+        "ai_prompt_suggestion": "How do I lay out a 600 sq ft kitchen garden for a family of four?",
+        "estimated_weeks": 1
+      },
+      "bg_beds_large": {
+        "module_id": "bg_beds_large",
+        "title": "Plan Large-Scale Layout & Rotation",
+        "summary": "Over 1,000 sq ft you're in small-plot territory — row spacing, rotation blocks, and water management matter.",
+        "checklist": [
+          "Divide the space into 4 rotation blocks (nightshades / brassicas / legumes / roots+cucurbits)",
+          "Space rows 18–24 inches apart for most crops; 36 inches for sprawling squash and melons",
+          "Plan water access: a 1-acre garden needs 1,000+ gallons per week in summer",
+          "Install drip tape on a timer to reduce labor and fungal disease from overhead watering",
+          "Mark perennial zones (asparagus, berries, herbs) at the edge so they don't interfere with annual rotation",
+          "Build a simple compost area large enough to turn 500+ lbs of material at once",
+          "Consider a deer fence (8 ft or electric) before investing significant money in plants"
+        ],
+        "ai_prompt_suggestion": "How do I plan a large backyard garden with crop rotation?",
+        "estimated_weeks": 2
+      },
+      "bg_plant_beginner": {
+        "module_id": "bg_plant_beginner",
+        "title": "Start with the Easy Wins",
+        "summary": "Begin with crops that forgive mistakes — nail these first, then add challenging ones.",
+        "checklist": [
+          "Easiest first crops: zucchini, bush beans, cherry tomatoes, lettuce, radishes, basil",
+          "Direct sow beans, radishes, and lettuce straight in the ground — no transplanting needed",
+          "Buy tomato and pepper transplants from a nursery your first year instead of starting from seed",
+          "Plant after your last frost date (ask your AI for the exact date for your location)",
+          "Thin seedlings to the spacing on the packet — crowded plants produce less",
+          "Label every row with a stake — you will forget what you planted where"
+        ],
+        "ai_prompt_suggestion": "What are the easiest vegetables for a first-time gardener to grow?",
+        "estimated_weeks": 1
+      },
+      "bg_plant_full": {
+        "module_id": "bg_plant_full",
+        "title": "Full Planting Calendar",
+        "summary": "Match every crop to the right season window — most failures are from planting too early or too late.",
+        "checklist": [
+          "Find your last spring frost date — ask your AI assistant for your exact location",
+          "Cool-season crops (lettuce, spinach, peas, kale): plant 4–6 weeks before last frost",
+          "Warm-season crops (tomatoes, peppers, squash, beans): plant 1–2 weeks after last frost",
+          "Start tomatoes and peppers indoors 6–8 weeks before last frost",
+          "Fall planting: count 8–10 weeks back from your first fall frost date for greens and root crops",
+          "Keep a paper or digital journal with what you planted, when, and the result"
+        ],
+        "ai_prompt_suggestion": "What should I plant now based on my frost dates?",
+        "estimated_weeks": 2
+      },
+      "bg_water": {
+        "module_id": "bg_water",
+        "title": "Watering & Mulching",
+        "summary": "Consistent moisture (not soggy, not bone dry) is the single biggest yield driver after sunlight.",
+        "checklist": [
+          "Water at the base of plants — wet leaves overnight cause fungal disease",
+          "Deep and less often beats shallow and daily: 1 inch per week total is the target",
+          "Check soil moisture with your finger — 2 inches down should feel like a wrung-out sponge",
+          "Install a timer on your soaker hose or drip line and forget it (set for early morning)",
+          "Mulch with 2–3 inches of straw, shredded leaves, or wood chips to cut watering by 50%",
+          "Newly transplanted seedlings need water every day for 1–2 weeks until roots establish",
+          "Signs of overwatering: yellow leaves, mushy stems. Signs of underwatering: wilting in morning."
+        ],
+        "ai_prompt_suggestion": "How often should I water my vegetable garden and what is the best method?",
+        "estimated_weeks": 1
+      },
+      "bg_pests_easy": {
+        "module_id": "bg_pests_easy",
+        "title": "Simple Pest Prevention",
+        "summary": "For small gardens the best defense is observation — catch problems early and most never become catastrophic.",
+        "checklist": [
+          "Walk the garden every 2–3 days and look at leaf undersides (aphids, caterpillar eggs live there)",
+          "Pinch off any chewed or spotted leaves before problems spread",
+          "Float row covers over young transplants for the first 2–3 weeks (keeps most flying pests off)",
+          "Hand-pick tomato hornworms — they're large and easy to remove",
+          "Spray with diluted dish soap + water for aphid outbreaks (1 tsp soap per quart water)",
+          "Interplant marigolds — they deter many common pests and attract beneficials"
+        ],
+        "ai_prompt_suggestion": "How do I keep pests off my small vegetable garden without chemicals?",
+        "estimated_weeks": 1
+      },
+      "bg_pests": {
+        "module_id": "bg_pests",
+        "title": "Organic Pest & Disease Management",
+        "summary": "A proactive IPM system beats reactive spraying — build habitat for beneficials and scout weekly.",
+        "checklist": [
+          "Install a 'beneficial insect hotel' or let a patch of dill and fennel go to flower — lacewings and parasitic wasps will follow",
+          "Scout every week: check leaf undersides, stems, and soil around the base",
+          "Use floating row covers on brassicas from transplant until bolting",
+          "Neem oil (1 tbsp per gallon water + a few drops soap) handles most soft-bodied pests and early fungal issues",
+          "Bacillus thuringiensis (Bt) spray targets caterpillars without harming bees or earthworms",
+          "Copper fungicide for early/late blight on tomatoes — preventive spray every 7–10 days in wet weather",
+          "Rotate crops so the same family never occupies the same bed two years in a row"
+        ],
+        "ai_prompt_suggestion": "What organic sprays and methods control common vegetable garden pests?",
+        "estimated_weeks": 1
+      },
+      "bg_harvest": {
+        "module_id": "bg_harvest",
+        "title": "Harvest & What to Do With It",
+        "summary": "Harvest at the right time and your plants produce more — most beginners leave vegetables on the plant too long.",
+        "checklist": [
+          "Harvest zucchini at 6–8 inches — oversized zucchini signals the plant to stop producing",
+          "Pick tomatoes when fully colored and slightly soft — don't let them split on the vine",
+          "Snip basil and herbs weekly to prevent flowering (once it flowers, flavor declines)",
+          "Harvest beans when pods snap cleanly — don't let them dry on the plant mid-season",
+          "Store most vegetables in the fridge immediately after harvest to preserve quality",
+          "Eat or preserve surplus within 2–3 days for peak nutrition"
+        ],
+        "ai_prompt_suggestion": "How do I know when my vegetables are ready to harvest?",
+        "estimated_weeks": 1
+      },
+      "bg_seeds": {
+        "module_id": "bg_seeds",
+        "title": "Seed Saving Basics",
+        "summary": "Save open-pollinated seed from your best plants and your garden improves year over year.",
+        "checklist": [
+          "Only save seed from open-pollinated or heirloom varieties — hybrid seeds won't reproduce true",
+          "Let one tomato, pepper, or bean plant fully mature past eating stage to collect seed",
+          "Ferment tomato seeds in water 2–3 days, rinse, dry on paper plates",
+          "Store dry seeds in labeled paper envelopes inside an airtight container in a cool dark place",
+          "Most vegetable seeds stay viable 3–5 years if stored below 50°F"
+        ],
+        "ai_prompt_suggestion": "How do I save vegetable seeds for next year?",
+        "estimated_weeks": 1
+      },
+      "bg_rotation": {
+        "module_id": "bg_rotation",
+        "title": "Crop Rotation & Cover Crops",
+        "summary": "Move plant families each season to break disease cycles and build long-term soil fertility.",
+        "checklist": [
+          "Map your garden into 4 zones and rotate: nightshades → brassicas → legumes → roots+cucurbits → back",
+          "Never plant tomatoes or peppers in the same soil two years in a row (prevents blight and nematode buildup)",
+          "Plant a winter cover crop after fall harvest: winter rye or crimson clover",
+          "Mow cover crops and let them decompose 2–3 weeks before spring planting",
+          "Keep records of what grew where — a simple notebook or phone photo of each bed label is enough"
+        ],
+        "ai_prompt_suggestion": "How do I set up a crop rotation plan for my backyard garden?",
+        "estimated_weeks": 1
+      }
+    }
+  },
+  {
+    "path_id": "community_garden",
+    "title": "Join a Chicago Community Garden",
+    "description": "Get a shared plot, learn the rules, grow with neighbors, and keep a small city bed productive all season.",
+    "icon": "🤝",
+    "target_audience": "Chicago neighbors joining or tending a community garden plot",
+    "agronomy_mode": "homesteader",
+    "cta_label": "Plan My Community Plot",
+    "cta_action": "story_map",
+    "modules": {
+      "cg_find": {
+        "module_id": "cg_find",
+        "title": "Find & Join a Garden",
+        "summary": "Chicago has neighborhood and park-district gardens with waitlists, orientation, and plot fees.",
+        "checklist": [
+          "Search Chicago Park District and neighborhood gardens near your zip code",
+          "Ask about plot size, annual fee, water access, and tool sharing",
+          "Attend orientation — most gardens require it before you dig",
+          "Get on the waitlist early (many open applications in late winter)"
+        ],
+        "ai_prompt_suggestion": "How do I join a community garden plot in Chicago?",
+        "estimated_weeks": 2
+      },
+      "cg_rules": {
+        "module_id": "cg_rules",
+        "title": "Plot Rules & Neighbors",
+        "summary": "Shared gardens succeed when everyone follows watering, weeding, and end-of-season cleanup rules.",
+        "checklist": [
+          "Read the garden handbook: organic-only? fence height? tall crops allowed?",
+          "Learn watering schedule and whether hoses are shared or timed",
+          "Keep paths clear and weeds pulled so neighbors are not fighting seeds",
+          "Mark your plot and respect boundary lines"
+        ],
+        "ai_prompt_suggestion": "What are typical Chicago community garden rules for new plot holders?",
+        "estimated_weeks": 1
+      },
+      "cg_soil": {
+        "module_id": "cg_soil",
+        "title": "Safe Soil in Shared Beds",
+        "summary": "Even community plots can sit on urban fill — know what you are planting into.",
+        "checklist": [
+          "Ask garden leadership whether beds use clean fill / raised soil or native ground",
+          "Add compost only if the garden allows outside materials",
+          "Mulch bare soil to reduce splash and tracking",
+          "Wash produce well; peel root crops grown in older soil if lead risk is unknown"
+        ],
+        "ai_prompt_suggestion": "How do Chicago community gardens handle soil safety and compost?",
+        "estimated_weeks": 1
+      },
+      "cg_plant": {
+        "module_id": "cg_plant",
+        "title": "Plant a Small Shared Plot",
+        "summary": "Prioritize high-yield crops that fit a 10×10 or similar plot without shading neighbors.",
+        "checklist": [
+          "Sketch a simple layout: tall crops on the north side of the plot",
+          "Start with tomatoes, peppers, greens, beans, and herbs",
+          "Use trellises for cucumbers/beans to save floor space",
+          "Leave room to walk so you do not compact wet soil"
+        ],
+        "ai_prompt_suggestion": "What crops fit a small Chicago community garden plot?",
+        "estimated_weeks": 2
+      },
+      "cg_season": {
+        "module_id": "cg_season",
+        "title": "Season Care & Cleanup",
+        "summary": "Weekly visits keep weeds down; fall cleanup keeps your plot for next year.",
+        "checklist": [
+          "Visit at least weekly in summer — water, harvest, and pull weeds",
+          "Share surplus with neighbors or a local food pantry when allowed",
+          "Clear spent plants by the garden's fall deadline",
+          "Ask about winter plot holding fees and spring signup dates"
+        ],
+        "ai_prompt_suggestion": "How do I keep a Chicago community garden plot productive through the season?",
+        "estimated_weeks": 1
+      }
+    }
+  },
+  {
+    "path_id": "sell_at_markets",
+    "title": "Sell at Chicago Farmers Markets",
+    "description": "Bring backyard or garden surplus to neighborhood markets — products, Illinois cottage food rules, SNAP/Link Match, and listing on Chicago Ag Connect.",
+    "icon": "🧺",
+    "target_audience": "Chicago growers ready to sell at neighborhood markets",
+    "agronomy_mode": "small_farm",
+    "cta_label": "List Your Booth on Chicago Ag Connect",
+    "cta_action": "list_farm",
+    "modules": {
+      "sm_products": {
+        "module_id": "sm_products",
+        "title": "Choose What to Sell",
+        "summary": "Focus on 3–5 products that fit a small city growing space and sell well at Chicago markets.",
+        "checklist": [
+          "List your top crops by yield from a backyard or community plot",
+          "Visit 2–3 Chicago markets on Saturday and note what sells out",
+          "Calculate cost per unit including seeds, packaging, transit, and booth fee",
+          "Consider herbs, greens, tomatoes, and simple value-added items if cottage-food eligible"
+        ],
+        "ai_prompt_suggestion": "What products sell best at Chicago farmers markets for a small backyard grower?",
+        "estimated_weeks": 2
+      },
+      "sm_labeling": {
+        "module_id": "sm_labeling",
+        "title": "Labeling & Food Safety",
+        "summary": "Meet Illinois cottage food and market labeling requirements before your first booth day.",
+        "checklist": [
+          "Check Illinois cottage food rules for products allowed without a commercial kitchen",
+          "Create labels with product name, ingredients, net weight, and your grower name",
+          "Ask your market manager about food-handler certificates and insurance",
+          "Keep simple batch records for anything you process"
+        ],
+        "ai_prompt_suggestion": "What Illinois cottage food labeling rules apply at Chicago farmers markets?",
+        "estimated_weeks": 1
+      },
+      "sm_apply": {
+        "module_id": "sm_apply",
+        "title": "Apply to Chicago Markets",
+        "summary": "Many Chicago markets fill vendor spots months before the season opens.",
+        "checklist": [
+          "Contact market managers in fall/winter for the following summer season",
+          "Prepare photos of your produce, setup, and growing space",
+          "Ask about SNAP/Link Match and whether you need to enroll as a vendor",
+          "Plan harvest and transit so produce stays cool on CTA / car / bike market days"
+        ],
+        "ai_prompt_suggestion": "How do I apply to sell at Chicago farmers markets?",
+        "estimated_weeks": 2
+      },
+      "sm_list": {
+        "module_id": "sm_list",
+        "title": "List on Chicago Ag Connect",
+        "summary": "Help neighbors find your booth by posting market days and products each week.",
+        "checklist": [
+          "Create a vendor profile on Chicago Ag Connect",
+          "Report which Chicago market you will attend each week",
+          "List products so shoppers can search for what you sell",
+          "Mention if you accept SNAP / Link Match"
+        ],
+        "ai_prompt_suggestion": "How do I set up my vendor profile on Chicago Ag Connect?",
+        "estimated_weeks": 1
+      }
+    }
+  }
+]
