@@ -14,9 +14,7 @@ from backend.models.marketplace import (
     VendorMarketPresence,
     AttendanceVendorRow,
     MarketAttendanceResponse,
-    UserAccount,
 )
-from backend.services.auth_service import auth_service
 from backend.services.data_store import consumer_store
 
 VENDORS_FILE = MARKETPLACE_DATA_DIR / "vendors.json"
@@ -78,14 +76,14 @@ class MarketplaceStore:
         raw = self._vendors.get(vendor_id)
         return self._vendor_from_raw(raw) if raw else None
 
-    def create_vendor(self, req, user: UserAccount) -> VendorProfile:
+    def create_vendor(self, req) -> VendorProfile:
         vendor_id = str(uuid.uuid4())[:10]
         raw = {
             "id": vendor_id,
             "farm_name": req.farm_name.strip(),
             "description": req.description,
             "product_tags": req.product_tags,
-            "claimed_by_user_id": user.id,
+            "claimed_by_user_id": None,
             "sells_direct": req.sells_direct,
             "farm_stand_lat": req.farm_stand_lat,
             "farm_stand_lon": req.farm_stand_lon,
@@ -93,18 +91,13 @@ class MarketplaceStore:
             "created_at": _utcnow().isoformat()
         }
         self._vendors[vendor_id] = raw
-        auth_service.link_vendor(user.id, vendor_id)
         self._persist()
         return self._vendor_from_raw(raw)
 
-    def claim_vendor(self, vendor_id: str, user: UserAccount) -> VendorProfile:
+    def claim_vendor(self, vendor_id: str) -> VendorProfile:
         raw = self._vendors.get(vendor_id)
         if not raw:
             raise HTTPException(status_code=404, detail="Vendor not found")
-        if raw.get("claimed_by_user_id") and raw["claimed_by_user_id"] != user.id:
-            raise HTTPException(status_code=400, detail="Vendor already claimed by another user")
-        raw["claimed_by_user_id"] = user.id
-        auth_service.link_vendor(user.id, vendor_id)
         self._persist()
         return self._vendor_from_raw(raw)
 
@@ -143,7 +136,6 @@ class MarketplaceStore:
         vendor_id: str,
         visit_date: date,
         products: List[str],
-        user: UserAccount,
         notes: Optional[str] = None,
         booth_hint: Optional[str] = None,
         as_vendor: bool = False
@@ -156,16 +148,9 @@ class MarketplaceStore:
         if not vendor:
             raise HTTPException(status_code=404, detail="Vendor not found")
 
-        if as_vendor:
-            if user.vendor_id != vendor_id:
-                raise HTTPException(status_code=403, detail="You can only report for your own vendor profile")
-            reported_by = "vendor"
-            vendor_confirmed = True
-            confidence = 1.0
-        else:
-            reported_by = "community"
-            vendor_confirmed = vendor.claimed_by_user_id == user.id
-            confidence = 1.0 if vendor_confirmed else 0.55
+        reported_by = "vendor" if as_vendor else "community"
+        vendor_confirmed = as_vendor
+        confidence = 1.0 if as_vendor else 0.55
 
         presence = {
             "id": str(uuid.uuid4())[:10],
@@ -174,7 +159,7 @@ class MarketplaceStore:
             "visit_date": visit_date.isoformat(),
             "products_available": products,
             "reported_by": reported_by,
-            "reporter_user_id": user.id,
+            "reporter_user_id": None,
             "vendor_confirmed": vendor_confirmed,
             "confidence_score": confidence,
             "notes": notes,
@@ -186,7 +171,7 @@ class MarketplaceStore:
         self._persist()
         return self._presence_from_raw(presence)
 
-    def log_community_visit(self, market_id: str, visit_date: date, entries: List[Any], user: UserAccount) -> List[VendorMarketPresence]:
+    def log_community_visit(self, market_id: str, visit_date: date, entries: List[Any]) -> List[VendorMarketPresence]:
         market = consumer_store.get_by_id(market_id)
         if not market:
             raise HTTPException(status_code=404, detail="Market not found")
@@ -199,7 +184,6 @@ class MarketplaceStore:
                 vendor_id=vendor.id,
                 visit_date=visit_date,
                 products=entry.products_seen,
-                user=user,
                 booth_hint=entry.booth_hint,
                 as_vendor=False
             )

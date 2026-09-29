@@ -17,7 +17,7 @@ Inspired by organizations like [Urban Growers Collective](https://www.urbangrowe
 **Requirements:** Python 3.11+ recommended.
 
 ```bash
-git clone <your-repo-url> Chicago-Ag-Connect
+git clone https://github.com/mwbuford/Chicago_Ag_Connect.git Chicago-Ag-Connect
 cd Chicago-Ag-Connect
 
 python3 -m venv .venv

@@ -1,115 +1,15 @@
-// Chicago Ag Connect Marketplace — Phases 0, 2, 3
-// Auth, vendor presence, community logging, product-first search
+// Chicago Ag Connect Marketplace — Phases 2, 3
+// Vendor presence, community logging, product-first search
 
-let authToken = localStorage.getItem('backyard_ag_token') || null;
-let currentUser = null;
 let activeMarketId = null;
 let activeMarketName = null;
-let authModeRegister = false;
+let sessionVendorId = null;
 
-function authHeaders() {
-  const h = { 'Content-Type': 'application/json' };
-  if (authToken) h['Authorization'] = `Bearer ${authToken}`;
-  return h;
-}
+const JSON_HEADERS = { 'Content-Type': 'application/json' };
 
 async function initMarketplace() {
-  if (authToken) {
-    try {
-      const res = await fetch('/api/auth/me', { headers: authHeaders() });
-      if (res.ok) {
-        currentUser = await res.json();
-        updateAuthButton();
-      } else {
-        authToken = null;
-        localStorage.removeItem('backyard_ag_token');
-      }
-    } catch (e) {
-      console.warn('Auth check failed', e);
-    }
-  }
-  setupAuthUI();
   setupProductSearch();
   setupMarketAttendanceModal();
-}
-
-function updateAuthButton() {
-  const btn = document.getElementById('btn-auth-header');
-  if (!btn) return;
-  if (currentUser) {
-    btn.textContent = `👤 ${currentUser.display_name}`;
-    btn.classList.add('signed-in');
-  } else {
-    btn.textContent = 'Sign In';
-    btn.classList.remove('signed-in');
-  }
-}
-
-function setupAuthUI() {
-  const modal = document.getElementById('auth-modal');
-  const btnOpen = document.getElementById('btn-auth-header');
-  const btnClose = document.getElementById('btn-close-auth-modal');
-  const btnSubmit = document.getElementById('btn-auth-submit');
-  const btnToggle = document.getElementById('btn-auth-toggle-mode');
-  const nameField = document.getElementById('auth-display-name');
-
-  if (btnOpen) btnOpen.addEventListener('click', () => {
-    if (currentUser) {
-      if (confirm('Sign out of Chicago Ag Connect?')) {
-        authToken = null;
-        currentUser = null;
-        localStorage.removeItem('backyard_ag_token');
-        updateAuthButton();
-      }
-      return;
-    }
-    modal.style.display = 'flex';
-  });
-
-  if (btnClose) btnClose.addEventListener('click', () => { modal.style.display = 'none'; });
-  if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
-
-  if (btnToggle) btnToggle.addEventListener('click', () => {
-    authModeRegister = !authModeRegister;
-    btnSubmit.textContent = authModeRegister ? 'Create Account' : 'Sign In';
-    btnToggle.textContent = authModeRegister ? 'Already have an account? Sign In' : 'Need an account? Register';
-    if (nameField) nameField.style.display = authModeRegister ? 'block' : 'none';
-  });
-
-  if (btnSubmit) btnSubmit.addEventListener('click', async () => {
-    const email = document.getElementById('auth-email').value.trim();
-    const password = document.getElementById('auth-password').value;
-    const displayName = document.getElementById('auth-display-name').value.trim();
-    const errEl = document.getElementById('auth-error');
-    errEl.style.display = 'none';
-
-    try {
-      const url = authModeRegister ? '/api/auth/register' : '/api/auth/login';
-      const body = authModeRegister
-        ? { email, password, display_name: displayName || email.split('@')[0], role: 'consumer' }
-        : { email, password };
-
-      const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.detail || 'Auth failed');
-
-      authToken = data.token;
-      currentUser = data.user;
-      localStorage.setItem('backyard_ag_token', authToken);
-      updateAuthButton();
-      modal.style.display = 'none';
-    } catch (err) {
-      errEl.textContent = err.message;
-      errEl.style.display = 'block';
-    }
-  });
-}
-
-function requireAuthOrPrompt() {
-  if (currentUser) return true;
-  alert('Please sign in to log vendors or report your farm presence.');
-  document.getElementById('auth-modal').style.display = 'flex';
-  return false;
 }
 
 // ── Product Search (Phase 3) ─────────────────────────────────
@@ -281,7 +181,7 @@ function addCommunityVendorRow() {
 }
 
 async function submitCommunityVisit() {
-  if (!requireAuthOrPrompt() || !activeMarketId) return;
+  if (!activeMarketId) return;
   const dateVal = document.getElementById('attendance-date-picker').value;
   const rows = document.querySelectorAll('.community-vendor-row');
   const entries = [];
@@ -298,7 +198,7 @@ async function submitCommunityVisit() {
   try {
     const res = await fetch(`/api/markets/${activeMarketId}/community-visit`, {
       method: 'POST',
-      headers: authHeaders(),
+      headers: JSON_HEADERS,
       body: JSON.stringify({ visit_date: dateVal, vendor_entries: entries })
     });
     const data = await res.json();
@@ -316,23 +216,14 @@ async function submitCommunityVisit() {
 function updateVendorPanelStatus() {
   const el = document.getElementById('vendor-profile-status');
   if (!el) return;
-  if (!currentUser) {
-    el.innerHTML = '⚠️ <a href="#" id="link-signin-vendor" style="color:#0284c7;">Sign in</a> to report as a vendor.';
-    document.getElementById('link-signin-vendor')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      document.getElementById('auth-modal').style.display = 'flex';
-    });
-    return;
-  }
-  if (currentUser.vendor_id) {
-    el.innerHTML = `✓ Vendor profile linked. Reporting as vendor ID: <strong>${currentUser.vendor_id}</strong>`;
+  if (sessionVendorId) {
+    el.innerHTML = `✓ Vendor profile active. Reporting as vendor ID: <strong>${sessionVendorId}</strong>`;
   } else {
     el.innerHTML = 'No vendor profile yet. Create one below to report your booth presence.';
   }
 }
 
 async function createVendorProfile() {
-  if (!requireAuthOrPrompt()) return;
   const farmName = prompt('Farm / vendor name:');
   if (!farmName) return;
   const products = (document.getElementById('vendor-products-input').value || '')
@@ -341,12 +232,12 @@ async function createVendorProfile() {
   try {
     const res = await fetch('/api/vendors', {
       method: 'POST',
-      headers: authHeaders(),
+      headers: JSON_HEADERS,
       body: JSON.stringify({ farm_name: farmName, product_tags: products, sells_direct: false })
     });
     const vendor = await res.json();
     if (!res.ok) throw new Error(vendor.detail || 'Create failed');
-    currentUser.vendor_id = vendor.id;
+    sessionVendorId = vendor.id;
     updateVendorPanelStatus();
     alert(`Vendor profile "${vendor.farm_name}" created!`);
   } catch (err) {
@@ -355,8 +246,8 @@ async function createVendorProfile() {
 }
 
 async function submitVendorPresence() {
-  if (!requireAuthOrPrompt() || !activeMarketId) return;
-  if (!currentUser.vendor_id) {
+  if (!activeMarketId) return;
+  if (!sessionVendorId) {
     alert('Create a vendor profile first.');
     return;
   }
@@ -368,8 +259,9 @@ async function submitVendorPresence() {
   try {
     const res = await fetch(`/api/markets/${activeMarketId}/presence`, {
       method: 'POST',
-      headers: authHeaders(),
+      headers: JSON_HEADERS,
       body: JSON.stringify({
+        vendor_id: sessionVendorId,
         visit_date: dateVal,
         products_available: products,
         booth_hint: booth

@@ -1,4 +1,5 @@
 import json
+import math
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
@@ -11,6 +12,16 @@ from backend.config import (
     resolve_query_state,
 )
 from backend.services.usda_consumer_parser import build_consumer_database
+
+
+def _haversine_miles(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    R = 3958.8
+    dlat = math.radians(lat2 - lat1)
+    dlon = math.radians(lon2 - lon1)
+    a = (math.sin(dlat / 2) ** 2 +
+         math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) *
+         math.sin(dlon / 2) ** 2)
+    return R * 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 
 class ConsumerDataStore:
@@ -131,21 +142,9 @@ class ConsumerDataStore:
             results = [l for l in self._locations if l.state_code == state_key]
 
         if filters.radius_miles and filters.user_lat is not None and filters.user_lon is not None:
-            import math
-
-            def haversine_miles(lat1, lon1, lat2, lon2):
-                R = 3958.8
-                dlat = math.radians(lat2 - lat1)
-                dlon = math.radians(lon2 - lon1)
-                a = (math.sin(dlat / 2) ** 2 +
-                     math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) *
-                     math.sin(dlon / 2) ** 2)
-                c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-                return R * c
-
             results = [
                 l for l in results
-                if haversine_miles(filters.user_lat, filters.user_lon, l.latitude, l.longitude) <= filters.radius_miles
+                if _haversine_miles(filters.user_lat, filters.user_lon, l.latitude, l.longitude) <= filters.radius_miles
             ]
         elif filters.county and filters.county.lower() != "all":
             c_clean = normalize_county_name(filters.county)

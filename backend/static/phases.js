@@ -362,7 +362,6 @@ function renderPathModules(path, modules, subPathId) {
   document.getElementById('btn-lp-ai-chat')?.addEventListener('click', (e) => openAgronomyChat(e.currentTarget.getAttribute('data-mode')));
   document.getElementById('btn-lp-list-farm')?.addEventListener('click', () => {
     if (typeof window.switchTab === 'function') window.switchTab('map-panel');
-    document.getElementById('auth-modal').style.display = 'flex';
   });
 }
 

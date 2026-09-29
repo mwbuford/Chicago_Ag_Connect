@@ -1,13 +1,9 @@
 from datetime import date
 from typing import Optional, List
 
-from fastapi import APIRouter, Query, HTTPException, Depends
+from fastapi import APIRouter, Query, HTTPException
 
 from backend.models.marketplace import (
-    UserRegisterRequest,
-    UserLoginRequest,
-    AuthResponse,
-    UserAccount,
     VendorProfile,
     VendorCreateRequest,
     VendorPresenceRequest,
@@ -16,30 +12,10 @@ from backend.models.marketplace import (
     MarketAttendanceResponse,
     ProductSearchResponse,
 )
-from backend.services.auth_service import auth_service, require_user, get_optional_user
 from backend.services.marketplace_store import marketplace_store
 from backend.services.product_search_service import product_search_service
 
 router = APIRouter(tags=["Marketplace"])
-
-
-# ── Auth (Phase 0) ─────────────────────────────────────────────
-
-@router.post("/api/auth/register", response_model=AuthResponse)
-def register(req: UserRegisterRequest):
-    token, user = auth_service.register(req.email, req.password, req.display_name, req.role)
-    return AuthResponse(token=token, user=user)
-
-
-@router.post("/api/auth/login", response_model=AuthResponse)
-def login(req: UserLoginRequest):
-    token, user = auth_service.login(req.email, req.password)
-    return AuthResponse(token=token, user=user)
-
-
-@router.get("/api/auth/me", response_model=UserAccount)
-def get_me(user: UserAccount = Depends(require_user)):
-    return user
 
 
 # ── Vendors (Phase 2) ────────────────────────────────────────
@@ -58,13 +34,13 @@ def get_vendor(vendor_id: str):
 
 
 @router.post("/api/vendors", response_model=VendorProfile)
-def create_vendor(req: VendorCreateRequest, user: UserAccount = Depends(require_user)):
-    return marketplace_store.create_vendor(req, user)
+def create_vendor(req: VendorCreateRequest):
+    return marketplace_store.create_vendor(req)
 
 
 @router.post("/api/vendors/{vendor_id}/claim", response_model=VendorProfile)
-def claim_vendor(vendor_id: str, user: UserAccount = Depends(require_user)):
-    return marketplace_store.claim_vendor(vendor_id, user)
+def claim_vendor(vendor_id: str):
+    return marketplace_store.claim_vendor(vendor_id)
 
 
 # ── Market Attendance (Phase 2) ──────────────────────────────
@@ -82,18 +58,14 @@ def get_market_attendance(
 def vendor_report_presence(
     market_id: str,
     req: VendorPresenceRequest,
-    user: UserAccount = Depends(require_user)
 ):
-    if not user.vendor_id and not req.vendor_id:
-        raise HTTPException(status_code=400, detail="Create or claim a vendor profile first, or pass vendor_id")
-
-    vendor_id = req.vendor_id or user.vendor_id
+    if not req.vendor_id:
+        raise HTTPException(status_code=400, detail="vendor_id is required")
     return marketplace_store.report_vendor_presence(
         market_id=market_id,
-        vendor_id=vendor_id,
+        vendor_id=req.vendor_id,
         visit_date=req.visit_date,
         products=req.products_available,
-        user=user,
         notes=req.notes,
         booth_hint=req.booth_hint,
         as_vendor=True
@@ -104,11 +76,10 @@ def vendor_report_presence(
 def community_log_visit(
     market_id: str,
     req: CommunityVisitRequest,
-    user: UserAccount = Depends(require_user)
 ):
     if len(req.vendor_entries) > 15:
         raise HTTPException(status_code=400, detail="Maximum 15 vendors per community log")
-    return marketplace_store.log_community_visit(market_id, req.visit_date, req.vendor_entries, user)
+    return marketplace_store.log_community_visit(market_id, req.visit_date, req.vendor_entries)
 
 
 # ── Product Search (Phase 3) ─────────────────────────────────

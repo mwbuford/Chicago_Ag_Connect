@@ -38,7 +38,7 @@ def calculate_climate_normals(latitude: float, longitude: float, state_code: str
     Computes precise Hardiness Zone, Frost-Free Days, and Frost Boundaries
     using NOAA 30-Year Climate Normals parameterized by latitude, longitude, and elevation proxy across all 50 states.
     """
-    current_year = 2026
+    current_year = datetime.today().year
     state_upper = state_code.upper()
 
     # Special state climate handling (Alaska, Hawaii, Florida, South Desert, etc.)
@@ -173,7 +173,7 @@ def compute_crop_recommendations(
     Translates universal Almanac / Garden.org crop profiles into parameterized,
     exact calendar dates for this specific property using relative offset math.
     """
-    current_year = 2026
+    current_year = datetime.today().year
     # Parse median last spring frost date from string
     parts = climate.last_spring_frost_date.split("-")[0].strip().split()
     month_name = parts[0]

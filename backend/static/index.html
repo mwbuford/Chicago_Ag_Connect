@@ -36,7 +36,6 @@
     </ul>
     <div class="welcome-actions">
       <button type="button" id="btn-welcome-jump-in" class="welcome-btn-primary">Jump In — No Account Needed</button>
-      <button type="button" id="btn-welcome-create-account" class="welcome-btn-secondary">Create Free Account</button>
     </div>
     <p class="welcome-hint">Or pick where you'd like to start:</p>
     <div class="welcome-cards">
@@ -93,7 +92,6 @@
     <!-- Chicago-only lock (no county / multi-state selector) -->
     <div class="header-controls">
       <button type="button" id="btn-open-welcome" class="auth-header-btn" title="About Chicago Ag Connect">Home</button>
-      <button type="button" id="btn-auth-header" class="auth-header-btn">Sign In</button>
       <div style="display: flex; align-items: center; gap: 0.5rem;">
         <span style="font-size: 0.8rem; font-weight: 700; color: #15803d; background:#dcfce7; padding:0.25rem 0.6rem; border-radius:999px;">🏙️ Chicago</span>
         <select id="state-selector" class="state-select" style="display:none;" aria-hidden="true">
@@ -549,27 +547,6 @@
   </div>
 </div>
 
-<!-- Auth Modal (Phase 0) -->
-<div class="modal-overlay" id="auth-modal" style="display: none;">
-  <div class="modal-card" style="max-width: 420px;">
-    <div class="modal-header">
-      <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800;">Sign in to Chicago Ag Connect</h3>
-      <button class="modal-close-btn" id="btn-close-auth-modal"><i data-lucide="x"></i></button>
-    </div>
-    <div class="modal-body">
-      <p style="font-size: 0.78rem; color: #64748b; margin-bottom: 0.75rem;">Log vendors you saw at markets or report your farm's presence and products.</p>
-      <div id="auth-form-login">
-        <input type="email" id="auth-email" class="search-input" placeholder="Email" style="margin-bottom: 0.5rem; width: 100%;">
-        <input type="password" id="auth-password" class="search-input" placeholder="Password" style="margin-bottom: 0.5rem; width: 100%;">
-        <input type="text" id="auth-display-name" class="search-input" placeholder="Display name (register only)" style="margin-bottom: 0.5rem; width: 100%; display: none;">
-        <button type="button" id="btn-auth-submit" class="ai-card-action-btn" style="width: 100%; justify-content: center; margin-top: 0.25rem;">Sign In</button>
-        <button type="button" id="btn-auth-toggle-mode" style="background: none; border: none; color: #0284c7; font-size: 0.75rem; margin-top: 0.5rem; cursor: pointer; width: 100%;">Need an account? Register</button>
-      </div>
-      <div id="auth-error" style="color: #b91c1c; font-size: 0.75rem; margin-top: 0.5rem; display: none;"></div>
-    </div>
-  </div>
-</div>
-
 <!-- Market Attendance Modal (Phase 2) -->
 <div class="modal-overlay" id="market-attendance-modal" style="display: none;">
   <div class="modal-card" style="max-width: 640px;">
@@ -598,7 +575,7 @@
       </div>
 
       <div id="panel-attendance-log" style="display: none;">
-        <p style="font-size: 0.76rem; color: #64748b; margin-bottom: 0.5rem;">Record who you saw selling at this market. Sign in required.</p>
+        <p style="font-size: 0.76rem; color: #64748b; margin-bottom: 0.5rem;">Record who you saw selling at this market.</p>
         <div id="community-vendor-rows"></div>
         <button type="button" id="btn-add-vendor-row" class="prompt-chip" style="margin: 0.5rem 0;">+ Add another vendor</button>
         <button type="button" id="btn-submit-community-visit" class="ai-card-action-btn">Submit Community Log</button>

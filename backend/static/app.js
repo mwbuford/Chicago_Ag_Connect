@@ -1408,11 +1408,7 @@ function setupWelcomeHome() {
   showHome();
 
   document.getElementById('btn-welcome-jump-in')?.addEventListener('click', dismissHome);
-  document.getElementById('btn-welcome-create-account')?.addEventListener('click', () => {
-    dismissHome();
-    switchTab('map-panel');
-    document.getElementById('auth-modal').style.display = 'flex';
-  });
+  document.getElementById('btn-welcome-create-account')?.addEventListener('click', dismissHome);
 
   document.querySelectorAll('[data-welcome-target]').forEach((card) => {
     card.addEventListener('click', () => {
